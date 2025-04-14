@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,9 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/register', [UserController::class, 'storeUser']);
+Route::post('/login', [UserController::class, 'loginUser']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/?page=mylist', [AuthController::class, 'index']);
+    Route::get('/?page=mylist', [ItemController::class, 'index']);
 });

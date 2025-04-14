@@ -1,0 +1,14 @@
+.header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    background-color: #000000;
+}
+
+.header__img-logo {
+    grid-column: 1;
+    display: inline-block;
+    margin: 20px 4vw 20px 2vw;
+    width: calc((100vw / 3) - 6vw);
+    height: auto;
+}
