@@ -14,6 +14,22 @@
 <body>
     <header class="header">
         <img class="header__img-logo" src="{{ asset('storage/images/logo.svg') }}" alt="coachtech">
+        <form action="" class="search-form" method="get">
+            @csrf
+            <input type="text" class="search-form__keyword-input" type="text" name="keyword" placeholder="なにをお探しですか？">
+        </form>
+        <nav class="nav">
+            @if (Auth::check())
+            <form action="/logout" class="nav__logout" method="post">
+                @csrf
+                <button class="nav__logout-button">ログアウト</button>
+            </form>
+            @else
+            <a href="/login" class="nav__login-link">ログイン</a>
+            @endif
+            <a href="/mypage" class="nav__mypage-link">マイページ</a>
+            <a href="/sell" class="nav__sell-link">出品</a>
+        </nav>
     </header>
 
     <main>

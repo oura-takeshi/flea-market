@@ -27,7 +27,9 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect('/?page=mylist');
+            return redirect('/');
+        } else {
+            return redirect('/login')->with('message', 'ログイン情報が登録されていません');
         }
     }
 }

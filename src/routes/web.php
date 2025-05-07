@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,8 @@ use App\Http\Controllers\UserController;
 
 Route::post('/register', [UserController::class, 'storeUser']);
 Route::post('/login', [UserController::class, 'loginUser']);
-
+Route::get('/', [ItemController::class, 'index']);
 Route::middleware('auth')->group(function () {
-    Route::get('/?page=mylist', [ItemController::class, 'index']);
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+    Route::get('/mypage', [ProfileController::class, 'profile']);
 });

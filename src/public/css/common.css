@@ -12,3 +12,76 @@
     width: calc((100vw / 3) - 6vw);
     height: auto;
 }
+
+.search-form {
+    grid-column: 2;
+    width: calc(100vw / 3);
+    display: flex;
+    align-items: center;
+}
+
+.search-form__keyword-input {
+    width: 100%;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 13px 2vw;
+}
+
+.nav {
+    grid-column: 3;
+    margin: 10px 2vw 10px 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logout-button {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.nav__mypage-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.nav__sell-link {
+    text-decoration: none;
+    background-color: #ffffff;
+    font-size: 20px;
+    color: #000000;
+    padding: 10px 2vw;
+    border-radius: 5px;
+}
+
+.nav__login-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 851px) {
+    .search-form__keyword-input {
+        font-size: 12px;
+    }
+
+    .nav__logout-button {
+        font-size: 12px;
+    }
+
+    .nav__mypage-link {
+        font-size: 12px;
+    }
+
+    .nav__sell-link {
+        font-size: 12px;
+    }
+
+    .nav__login-link {
+        font-size: 12px;
+    }
+}

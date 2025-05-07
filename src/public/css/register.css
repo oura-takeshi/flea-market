@@ -1,3 +1,11 @@
+.search-form {
+    display: none;
+}
+
+.nav {
+    display: none;
+}
+
 .register-content {
     display: flex;
     flex-direction: column;

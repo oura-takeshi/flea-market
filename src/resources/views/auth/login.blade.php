@@ -7,7 +7,7 @@
 @section('content')
 <div class="login-content">
     <h1 class="login-form__heading">ログイン</h1>
-    <form class="login-form" action="/login" method="post">
+    <form class="login-form" action="/login" method="post" novalidate>
         @csrf
         <div class="form__group">
             <label class="form__label" for="email">メールアドレス</label>
@@ -19,6 +19,9 @@
                     @error('email')
                     {{ $message }}
                     @enderror
+                    @if(session('message'))
+                    {{ session('message') }}
+                    @endif
                 </div>
             </div>
         </div>
@@ -32,6 +35,9 @@
                     @error('password')
                     {{ $message }}
                     @enderror
+                    @if(session('message'))
+                    {{ session('message') }}
+                    @endif
                 </div>
             </div>
         </div>
