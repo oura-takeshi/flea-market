@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+@if(session('message'))
+<div class="login-alert">{{ session('message') }}</div>
+@endif
 <div class="login-content">
     <h1 class="login-form__heading">ログイン</h1>
     <form class="login-form" action="/login" method="post" novalidate>
@@ -19,9 +22,6 @@
                     @error('email')
                     {{ $message }}
                     @enderror
-                    @if(session('message'))
-                    {{ session('message') }}
-                    @endif
                 </div>
             </div>
         </div>
@@ -35,9 +35,6 @@
                     @error('password')
                     {{ $message }}
                     @enderror
-                    @if(session('message'))
-                    {{ session('message') }}
-                    @endif
                 </div>
             </div>
         </div>

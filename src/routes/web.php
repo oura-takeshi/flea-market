@@ -22,5 +22,6 @@ Route::post('/login', [UserController::class, 'loginUser']);
 Route::get('/', [ItemController::class, 'index']);
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+    Route::get('/mypage/profile', [ProfileController::class, 'profileEdit']);
     Route::get('/mypage', [ProfileController::class, 'profile']);
 });
