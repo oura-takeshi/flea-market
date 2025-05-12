@@ -20,8 +20,14 @@
         @foreach ($items as $item)
         @if($item->user_id != $user_id)
         <div class="item">
-            <a href="/item/{{$item->id}}" class="item__link"></a>
-            <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
+            <div class="item__top-content">
+                <a href="/item/{{$item->id}}" class="item__link">
+                    <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
+                </a>
+                @if($item->purchase != null)
+                <div class="item__sold-label">sold</div>
+                @endif
+            </div>
             <p class="item__name">{{$item->name}}</p>
         </div>
         @endif

@@ -139,5 +139,23 @@ class ItemsTableSeeder extends Seeder
                 'number_comments' => '0',
             ],
         ]);
+        DB::table('purchases')->insert([
+            [
+                'user_id' => '1',
+                'item_id' => '6',
+                'post_code' => '000-1111',
+                'address' => 'hoge',
+                'building' => 'hoge',
+                'payment_method' => '1',
+            ],
+            [
+                'user_id' => '1',
+                'item_id' => '7',
+                'post_code' => '000-1111',
+                'address' => 'hoge',
+                'building' => 'hoge',
+                'payment_method' => '2',
+            ],
+        ]);
     }
 }
