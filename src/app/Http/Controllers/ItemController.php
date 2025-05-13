@@ -13,6 +13,8 @@ class ItemController extends Controller
         $param = $request->page;
         $user_id = Auth::id();
         $items = Item::all();
-        return view('index', compact('param', 'user_id', 'items'));
+        $user = Auth::user();
+        $like_items = $user->items;
+        return view('index', compact('param', 'user_id', 'items', 'like_items'));
     }
 }
