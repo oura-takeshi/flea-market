@@ -35,7 +35,7 @@
     </div>
     @if (Auth::check())
     <div class="items">
-        @foreach ($like_items as $item)
+        @foreach ($user_items as $item)
         @if($item->user_id != $user_id && $item->pivot->like == 1)
         <div class="item">
             <div class="item__top-content">

@@ -14,7 +14,11 @@ class ItemController extends Controller
         $user_id = Auth::id();
         $items = Item::all();
         $user = Auth::user();
-        $like_items = $user->items;
-        return view('index', compact('param', 'user_id', 'items', 'like_items'));
+        if ($user != null) {
+            $user_items = $user->items;
+        } else {
+            $user_items = null;
+        }
+        return view('index', compact('param', 'user_id', 'items', 'user_items'));
     }
 }
