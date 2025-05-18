@@ -10,4 +10,9 @@ class ProfileController extends Controller
     {
         return view('mypage_profile');
     }
+
+    public function profile()
+    {
+        return view('mypage');
+    }
 }
