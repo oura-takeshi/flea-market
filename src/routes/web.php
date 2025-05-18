@@ -20,6 +20,7 @@ use App\Http\Controllers\ProfileController;
 Route::post('/register', [UserController::class, 'storeUser']);
 Route::post('/login', [UserController::class, 'loginUser']);
 Route::get('/', [ItemController::class, 'index']);
+Route::get('/item/{item_id}', [ItemController::class, 'detail']);
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
     Route::get('/mypage/profile', [ProfileController::class, 'profileEdit']);
