@@ -21,4 +21,9 @@ class ItemController extends Controller
         }
         return view('index', compact('param', 'user_id', 'items', 'user_items'));
     }
+
+    public function detail($item_id)
+    {
+        return view('item');
+    }
 }
