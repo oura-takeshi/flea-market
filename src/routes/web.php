@@ -24,5 +24,6 @@ Route::get('/item/{item_id}', [ItemController::class, 'detail']);
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
     Route::get('/mypage/profile', [ProfileController::class, 'profileEdit']);
+    Route::post('/mypage/profile', [ProfileController::class, 'profileUpdate']);
     Route::get('/mypage', [ProfileController::class, 'profile']);
 });

@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Item::class)->withPivot('like', 'comment');
     }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
 }
