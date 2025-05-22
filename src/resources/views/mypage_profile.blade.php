@@ -24,7 +24,11 @@
                     <label for="profile_image" class="form__select-button">画像を選択する</label>
                     <input type="file" class="form__input-hidden" name="profile_image" id="profile_image">
                 </div>
-                <div class="form__error"></div>
+                <div class="form__error">
+                    @error('profile_image')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
         <div class="form__group">
@@ -33,7 +37,11 @@
                 <div class="form__input-text">
                     <input type="text" name="user_name" id="user_name" value="{{ $user_name }}">
                 </div>
-                <div class="form__error"></div>
+                <div class="form__error">
+                    @error('user_name')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
         <div class="form__group">
@@ -42,7 +50,11 @@
                 <div class="form__input-text">
                     <input type="text" name="post_code" id="post_code" value="{{ $post_code }}">
                 </div>
-                <div class="form__error"></div>
+                <div class="form__error">
+                    @error('post_code')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
         <div class="form__group">
@@ -51,7 +63,11 @@
                 <div class="form__input-text">
                     <input type="text" name="address" id="address" value="{{ $address }}">
                 </div>
-                <div class="form__error"></div>
+                <div class="form__error">
+                    @error('address')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
         <div class="form__group">
@@ -60,7 +76,6 @@
                 <div class="form__input-text">
                     <input type="text" name="building" id="building" value="{{ $building }}">
                 </div>
-                <div class="form__error"></div>
             </div>
         </div>
         <button class="form__button-submit" type="submit">更新する</button>

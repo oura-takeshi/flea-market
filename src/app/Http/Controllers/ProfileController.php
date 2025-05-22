@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Profile;
+use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -33,30 +34,51 @@ class ProfileController extends Controller
         return view('mypage_profile', compact('user_id', 'user_name', 'profile_id', 'image', 'post_code', 'address', 'building'));
     }
 
-    public function profileUpdate(Request $request)
+    public function profileUpdate(ProfileRequest $request)
     {
-        $file_name = $request->file('profile_image')->getClientOriginalName();
-        $request->file('profile_image')->storeAs('public/images', $file_name);
+        $data = $request->file('profile_image');
+        if ($data != null) {
+            $file_name = $request->file('profile_image')->getClientOriginalName();
+            $request->file('profile_image')->storeAs('public/images', $file_name);
+        }
 
         User::find($request->user_id)->update(['name' => $request->user_name]);
 
         $user = Auth::user();
         $user_profile = $user->profile;
         if ($user_profile == null) {
-            Profile::create([
-                'user_id' => $request->user_id,
-                'image' => 'storage/images/' . $file_name,
-                'post_code' => $request->post_code,
-                'address' => $request->address,
-                'building' => $request->building,
-            ]);
+            if ($data != null) {
+                Profile::create([
+                    'user_id' => $request->user_id,
+                    'image' => 'storage/images/' . $file_name,
+                    'post_code' => $request->post_code,
+                    'address' => $request->address,
+                    'building' => $request->building,
+                ]);
+            } else {
+                Profile::create([
+                    'user_id' => $request->user_id,
+                    'image' => null,
+                    'post_code' => $request->post_code,
+                    'address' => $request->address,
+                    'building' => $request->building,
+                ]);
+            }
         } else {
-            Profile::find($request->profile_id)->update([
-                'image' => 'storage/images/' . $file_name,
-                'post_code' => $request->post_code,
-                'address' => $request->address,
-                'building' => $request->building,
-            ]);
+            if ($data != null) {
+                Profile::find($request->profile_id)->update([
+                    'image' => 'storage/images/' . $file_name,
+                    'post_code' => $request->post_code,
+                    'address' => $request->address,
+                    'building' => $request->building,
+                ]);
+            } else {
+                Profile::find($request->profile_id)->update([
+                    'post_code' => $request->post_code,
+                    'address' => $request->address,
+                    'building' => $request->building,
+                ]);
+            }
         }
 
         return redirect('/');

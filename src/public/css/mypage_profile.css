@@ -25,11 +25,12 @@
 
 .form__group:first-of-type {
     flex-direction: row;
+    align-items: center;
     margin-bottom: 40px;
 }
 
 .form__group:last-of-type {
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 
 .form__profile-image {
@@ -53,10 +54,11 @@
 }
 
 .form__select-image {
-    margin-left: 2vw;
+    padding-left: 2vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 35vw;
 }
 
 .form__select-button {
@@ -65,7 +67,7 @@
     font-weight: 600;
     color: #FF5555;
     border-radius: 8px;
-    padding: 6px 1vw;
+    padding: 6px 16px;
     cursor: pointer;
     box-sizing: border-box;
     display: inline-block;
