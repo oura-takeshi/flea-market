@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Item;
 use App\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller
@@ -87,6 +88,19 @@ class ProfileController extends Controller
     public function profile(Request $request)
     {
         $param = $request->page;
-        return view('mypage', compact('param'));
+
+        $user = Auth::user();
+        $user_id = Auth::user()->id;
+        $user_name = $user->name;
+
+        $user_profile = $user->profile;
+        if ($user_profile == null) {
+            $image = null;
+        } else {
+            $image = $user_profile->image;
+        }
+
+        $items = Item::all();
+        return view('mypage', compact('param', 'user_id', 'user_name', 'image', 'items'));
     }
 }

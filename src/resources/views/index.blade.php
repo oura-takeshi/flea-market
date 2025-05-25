@@ -20,7 +20,7 @@
                     <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
                 </a>
                 @if($item->purchase != null)
-                <div class="item__sold-label">sold</div>
+                <a href="/item/{{$item->id}}" class="item__sold-label">sold</a>
                 @endif
             </div>
             <p class="item__name">{{$item->name}}</p>
@@ -43,7 +43,7 @@
                     <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
                 </a>
                 @if($item->purchase != null)
-                <div class="item__sold-label">sold</div>
+                <a href="/item/{{$item->id}}" class="item__sold-label">sold</a>
                 @endif
             </div>
             <p class="item__name">{{$item->name}}</p>

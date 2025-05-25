@@ -79,3 +79,25 @@
     color: #0073CC;
     text-decoration: none;
 }
+
+@media screen and (max-width: 851px) {
+    .register-form__heading {
+        font-size: 17px;
+    }
+
+    .form__label {
+        font-size: 11px;
+    }
+
+    .form__error {
+        font-size: 9px;
+    }
+
+    .form__button-submit {
+        font-size: 11px;
+    }
+
+    .login__button-submit {
+        font-size: 9px;
+    }
+}

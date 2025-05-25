@@ -8,7 +8,7 @@
 .header__img-logo {
     grid-column: 1;
     display: inline-block;
-    margin: 20px 4vw 20px 2vw;
+    margin: 1vw 6vw 1vw 2vw;
     width: calc((100vw / 3) - 6vw);
     height: auto;
 }
@@ -22,14 +22,14 @@
 
 .search-form__keyword-input {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 20px;
-    padding: 13px 2vw;
+    padding: 10px 2.6vw;
 }
 
 .nav {
     grid-column: 3;
-    margin: 10px 2vw 10px 4vw;
+    margin: auto 2vw auto 6vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,6 +41,9 @@
     color: #ffffff;
     font-size: 20px;
     cursor: pointer;
+    padding: 0;
+    display: block;
+    margin: auto;
 }
 
 .nav__mypage-link {
@@ -54,8 +57,8 @@
     background-color: #ffffff;
     font-size: 20px;
     color: #000000;
-    padding: 10px 2vw;
-    border-radius: 5px;
+    padding: 6px 22px;
+    border-radius: 3px;
 }
 
 .nav__login-link {
@@ -66,22 +69,26 @@
 
 @media screen and (max-width: 851px) {
     .search-form__keyword-input {
-        font-size: 12px;
+        font-size: 11px;
+        border-radius: 3.2px;
+        padding: 5.4px 2.6vw;
     }
 
     .nav__logout-button {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .nav__mypage-link {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .nav__sell-link {
-        font-size: 12px;
+        font-size: 11px;
+        padding: 3.2px 11.8px;
+        border-radius: 1.6px;
     }
 
     .nav__login-link {
-        font-size: 12px;
+        font-size: 11px;
     }
 }

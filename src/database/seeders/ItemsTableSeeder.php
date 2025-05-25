@@ -156,6 +156,14 @@ class ItemsTableSeeder extends Seeder
                 'building' => 'sanple-building',
                 'payment_method' => '2',
             ],
+            [
+                'user_id' => '2',
+                'item_id' => '1',
+                'post_code' => '000-2222',
+                'address' => 'sample-address',
+                'building' => 'sanple-building',
+                'payment_method' => '1',
+            ],
         ]);
         DB::table('item_user')->insert([
             [

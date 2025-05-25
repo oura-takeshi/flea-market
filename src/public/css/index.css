@@ -58,7 +58,6 @@
 }
 
 .item__link {
-    z-index: 10;
     width: 100%;
 }
 
@@ -79,6 +78,8 @@
     font-weight: 700;
     width: 100%;
     text-align: center;
+    display: block;
+    text-decoration: none;
 }
 
 .item__name {
@@ -88,26 +89,26 @@
 
 @media screen and (max-width: 851px){
     .heading__index-title {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .heading__mylist-link {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .heading__index-link {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .heading__mylist-title {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .item__name {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .item__sold-label {
-        font-size: 24px;
+        font-size: 22px;
     }
 }
