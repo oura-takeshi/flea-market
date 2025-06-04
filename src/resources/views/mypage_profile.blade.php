@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="profile-content">
+<div class="content">
     <h1 class="profile-form__heading">プロフィール設定</h1>
     <form action="/mypage/profile" class="profile-form" method="post" enctype="multipart/form-data">
         @csrf

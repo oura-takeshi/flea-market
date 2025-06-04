@@ -21,9 +21,19 @@ class Item extends Model
         'description'
     ];
 
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany(User::class)->withPivot('like', 'comment');
+        return $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        return $this->belongsToMany(User::class, 'comments')->withPivot('content');
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes');
     }
 
     public function condition()

@@ -44,7 +44,17 @@ class User extends Authenticatable
 
     public function items()
     {
-        return $this->belongsToMany(Item::class)->withPivot('like', 'comment');
+        return $this->hasMany(Item::class);
+    }
+
+    public function comments()
+    {
+        return $this->belongsToMany(Item::class, 'comments')->withPivot('content');
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Item::class, 'likes');
     }
 
     public function profile()

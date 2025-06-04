@@ -17,8 +17,6 @@ class CreateItemUserTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('item_id')->constrained()->cascadeOnDelete();
-            $table->tinyInteger('like')->unsigned()->comment('いいね機能 1:いいね追加、2:いいね解除');
-            $table->string('comment');
             $table->timestamps();
         });
     }

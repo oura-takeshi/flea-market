@@ -8,7 +8,7 @@
 @if(session('message'))
 <div class="login-alert">{{ session('message') }}</div>
 @endif
-<div class="login-content">
+<div class="content">
     <h1 class="login-form__heading">ログイン</h1>
     <form class="login-form" action="/login" method="post" novalidate>
         @csrf

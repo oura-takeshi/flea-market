@@ -5,15 +5,14 @@
 @endsection
 
 @section('content')
-<div class="index-content">
+<div class="content">
     @if($param != "mylist")
     <div class="heading">
         <p class="heading__index-title">おすすめ</p>
         <a href="/?page=mylist" class="heading__mylist-link">マイリスト</a>
     </div>
     <div class="items">
-        @foreach ($items as $item)
-        @if($item->user_id != $user_id)
+        @foreach ($not_have_items as $item)
         <div class="item">
             <div class="item__top-content">
                 <a href="/item/{{$item->id}}" class="item__link">
@@ -25,7 +24,6 @@
             </div>
             <p class="item__name">{{$item->name}}</p>
         </div>
-        @endif
         @endforeach
     </div>
     @else
@@ -33,10 +31,9 @@
         <a href="/" class="heading__index-link">おすすめ</a>
         <p class="heading__mylist-title">マイリスト</p>
     </div>
-    @if (Auth::check())
+    @if(Auth::check())
     <div class="items">
-        @foreach ($user_items as $item)
-        @if($item->user_id != $user_id && $item->pivot->like == 1)
+        @foreach ($like_items as $item)
         <div class="item">
             <div class="item__top-content">
                 <a href="/item/{{$item->id}}" class="item__link">
@@ -48,7 +45,6 @@
             </div>
             <p class="item__name">{{$item->name}}</p>
         </div>
-        @endif
         @endforeach
     </div>
     @endif

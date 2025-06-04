@@ -27,7 +27,7 @@
             @else
             <a href="/login" class="nav__login-link">ログイン</a>
             @endif
-            <a href="/mypage" class="nav__mypage-link">マイページ</a>
+            <a href="/mypage?page=sell" class="nav__mypage-link">マイページ</a>
             <a href="/sell" class="nav__sell-link">出品</a>
         </nav>
     </header>

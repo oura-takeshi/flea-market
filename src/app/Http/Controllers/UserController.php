@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function storeUser(RegisterRequest $request)
+    public function userStore(RegisterRequest $request)
     {
         $user = User::create([
             'name' => $request->name,
@@ -23,7 +23,7 @@ class UserController extends Controller
         return redirect('/mypage/profile');
     }
 
-    public function loginUser(LoginRequest $request)
+    public function userLogin(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {

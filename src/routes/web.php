@@ -17,13 +17,17 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::post('/register', [UserController::class, 'storeUser']);
-Route::post('/login', [UserController::class, 'loginUser']);
+Route::post('/register', [UserController::class, 'userStore']);
+Route::post('/login', [UserController::class, 'userLogin']);
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'detail']);
+Route::post('/item/comment', [ItemController::class, 'commentPost']);
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
     Route::get('/mypage/profile', [ProfileController::class, 'profileEdit']);
     Route::post('/mypage/profile', [ProfileController::class, 'profileUpdate']);
     Route::get('/mypage', [ProfileController::class, 'profile']);
+    Route::post('/item/{item_id}/like', [ItemController::class, 'itemLike']);
+    Route::post('/item/{item_id}/not-like', [ItemController::class, 'itemNotLike']);
+    Route::post('/purchase/{item_id}', [ItemController::class, 'purchase']);
 });

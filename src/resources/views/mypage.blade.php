@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="mypage-content">
+<div class="content">
     <div class="top-content">
         <div class="profile-content">
             <div class="profile-info">

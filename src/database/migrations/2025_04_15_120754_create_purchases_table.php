@@ -19,7 +19,7 @@ class CreatePurchasesTable extends Migration
             $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->string('post_code');
             $table->string('address');
-            $table->string('building');
+            $table->string('building')->nullable();
             $table->tinyInteger('payment_method')->unsigned()->comment('支払い方法 1:コンビニ払い、2:カード払い');
             $table->timestamps();
         });

@@ -26,6 +26,20 @@ class ItemsTableSeeder extends Seeder
                 'email' => 'fuga@example.com',
                 'password' => Hash::make('fuga1234'),
             ],
+            [
+                'name' => 'piyo',
+                'email' => 'piyo@example.com',
+                'password' => Hash::make('piyo1234'),
+            ],
+        ]);
+        DB::table('profiles')->insert([
+            [
+                'user_id' => '1',
+                'image' => 'storage/images/banana.png',
+                'post_code' => '000-1111',
+                'address' => 'sample-address',
+                'building' => null,
+            ],
         ]);
         DB::table('items')->insert([
             [
@@ -36,8 +50,6 @@ class ItemsTableSeeder extends Seeder
                 'price' => '15000',
                 'description' => 'スタイリッシュなデザインのメンズ腕時計',
                 'brand' => 'Rolax',
-                'number_likes' => '0',
-                'number_comments' => '0',
             ],
             [
                 'user_id' => '1',
@@ -47,8 +59,6 @@ class ItemsTableSeeder extends Seeder
                 'price' => '5000',
                 'description' => '高速で信頼性の高いハードディスク',
                 'brand' => '西芝',
-                'number_likes' => '0',
-                'number_comments' => '0',
             ],
             [
                 'user_id' => '1',
@@ -57,9 +67,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => '玉ねぎ3束',
                 'price' => '300',
                 'description' => '新鮮な玉ねぎ3束のセット',
-                'brand' => '',
-                'number_likes' => '0',
-                'number_comments' => '0',
+                'brand' => null,
             ],
             [
                 'user_id' => '1',
@@ -68,9 +76,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => '革靴',
                 'price' => '4000',
                 'description' => 'クラシックなデザインの革靴',
-                'brand' => '',
-                'number_likes' => '0',
-                'number_comments' => '0',
+                'brand' => null,
             ],
             [
                 'user_id' => '1',
@@ -79,9 +85,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => 'ノートPC',
                 'price' => '45000',
                 'description' => '高性能なノートパソコン',
-                'brand' => '',
-                'number_likes' => '0',
-                'number_comments' => '0',
+                'brand' => null,
             ],
             [
                 'user_id' => '2',
@@ -90,9 +94,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => 'マイク',
                 'price' => '8000',
                 'description' => '高音質のレコーディング用マイク',
-                'brand' => '',
-                'number_likes' => '0',
-                'number_comments' => '0',
+                'brand' => null,
             ],
             [
                 'user_id' => '2',
@@ -101,9 +103,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => 'ショルダーバッグ',
                 'price' => '3500',
                 'description' => 'おしゃれなショルダーバッグ',
-                'brand' => '',
-                'number_likes' => '0',
-                'number_comments' => '0',
+                'brand' => null,
             ],
             [
                 'user_id' => '2',
@@ -112,9 +112,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => 'タンブラー',
                 'price' => '500',
                 'description' => '使いやすいタンブラー',
-                'brand' => '',
-                'number_likes' => '0',
-                'number_comments' => '0',
+                'brand' => null,
             ],
             [
                 'user_id' => '2',
@@ -124,8 +122,6 @@ class ItemsTableSeeder extends Seeder
                 'price' => '4000',
                 'description' => '手動のコーヒーミル',
                 'brand' => 'Starbacks',
-                'number_likes' => '0',
-                'number_comments' => '0',
             ],
             [
                 'user_id' => '2',
@@ -134,9 +130,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => 'メイクセット',
                 'price' => '2500',
                 'description' => '便利なメイクアップセット',
-                'brand' => '',
-                'number_likes' => '0',
-                'number_comments' => '0',
+                'brand' => null,
             ],
         ]);
         DB::table('purchases')->insert([
@@ -145,7 +139,7 @@ class ItemsTableSeeder extends Seeder
                 'item_id' => '6',
                 'post_code' => '000-1111',
                 'address' => 'sample-address',
-                'building' => 'sanple-building',
+                'building' => null,
                 'payment_method' => '1',
             ],
             [
@@ -153,7 +147,7 @@ class ItemsTableSeeder extends Seeder
                 'item_id' => '7',
                 'post_code' => '000-1111',
                 'address' => 'sample-address',
-                'building' => 'sanple-building',
+                'building' => null,
                 'payment_method' => '2',
             ],
             [
@@ -161,34 +155,72 @@ class ItemsTableSeeder extends Seeder
                 'item_id' => '1',
                 'post_code' => '000-2222',
                 'address' => 'sample-address',
-                'building' => 'sanple-building',
+                'building' => null,
                 'payment_method' => '1',
             ],
         ]);
-        DB::table('item_user')->insert([
+        DB::table('comments')->insert([
             [
                 'user_id' => '1',
                 'item_id' => '6',
-                'like' => '1',
-                'comment' => 'sample-comment',
+                'content' => 'sample-comment-1',
+            ],
+            [
+                'user_id' => '1',
+                'item_id' => '6',
+                'content' => 'sample-comment-2',
             ],
             [
                 'user_id' => '1',
                 'item_id' => '7',
-                'like' => '2',
-                'comment' => 'sample-comment',
+                'content' => 'sample-comment',
             ],
             [
                 'user_id' => '1',
                 'item_id' => '8',
-                'like' => '1',
-                'comment' => 'sample-comment',
+                'content' => 'sample-comment',
             ],
             [
                 'user_id' => '1',
                 'item_id' => '9',
-                'like' => '2',
-                'comment' => 'sample-comment',
+                'content' => 'sample-comment',
+            ],
+            [
+                'user_id' => '2',
+                'item_id' => '1',
+                'content' => 'sample-comment',
+            ],
+            [
+                'user_id' => '2',
+                'item_id' => '2',
+                'content' => 'sample-comment',
+            ],
+            [
+                'user_id' => '3',
+                'item_id' => '1',
+                'content' => 'sample-comment',
+            ],
+        ]);
+        DB::table('likes')->insert([
+            [
+                'user_id' => '1',
+                'item_id' => '6',
+            ],
+            [
+                'user_id' => '1',
+                'item_id' => '8',
+            ],
+            [
+                'user_id' => '2',
+                'item_id' => '1',
+            ],
+            [
+                'user_id' => '2',
+                'item_id' => '2',
+            ],
+            [
+                'user_id' => '3',
+                'item_id' => '1',
             ],
         ]);
     }
