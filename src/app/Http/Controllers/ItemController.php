@@ -44,6 +44,22 @@ class ItemController extends Controller
         return view('item', compact('item', 'item_categories', 'item_comments', 'item_likes', 'user_like'));
     }
 
+    public function likeCreate($item_id)
+    {
+        like::create([
+            'user_id' => Auth::id(),
+            'item_id' => $item_id,
+        ]);
+        return back();
+    }
+
+    public function likeDelete($item_id)
+    {
+        $like = like::where('item_id', $item_id)->where('user_id', Auth::id())->first();
+        $like->delete();
+        return back();
+    }
+
     public function purchase($item_id)
     {
         return view('purchase');

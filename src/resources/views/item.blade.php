@@ -30,7 +30,7 @@
                     <input type="submit" value="いいね追加" id="like">
                 </form>
                 @else
-                <p class="icon__like-label">★</p>
+                <a class="icon__like-label" href="/register">★</a>
                 @endif
                 @else
                 <label class="icon__not-like-label" for="not-like">★</label>

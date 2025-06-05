@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage/profile', [ProfileController::class, 'profileEdit']);
     Route::post('/mypage/profile', [ProfileController::class, 'profileUpdate']);
     Route::get('/mypage', [ProfileController::class, 'profile']);
-    Route::post('/item/{item_id}/like', [ItemController::class, 'itemLike']);
-    Route::post('/item/{item_id}/not-like', [ItemController::class, 'itemNotLike']);
+    Route::post('/item/{item_id}/like', [ItemController::class, 'likeCreate']);
+    Route::post('/item/{item_id}/not-like', [ItemController::class, 'likeDelete']);
     Route::post('/purchase/{item_id}', [ItemController::class, 'purchase']);
 });
