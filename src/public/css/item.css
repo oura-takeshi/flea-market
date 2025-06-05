@@ -157,6 +157,7 @@
 .item__desc-text {
     font-size: 24px;
     margin: 0;
+    white-space: pre-wrap;
 }
 
 .item__info {
@@ -270,6 +271,7 @@
     font-size: 20px;
     padding: 1vw;
     margin: 0;
+    white-space: pre-wrap;
 }
 
 .comment-form {
@@ -283,12 +285,22 @@
     margin-bottom: 7px;
 }
 
+.comment-form__input-textarea {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
 .comment-form__textarea {
     width: 100%;
     height: 240px;
     border: solid 2px #5F5F5F;
     border-radius: 5px;
-    margin-bottom: 30px;
+}
+
+.comment-form__error {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ff0000;
 }
 
 .comment-form__button-submit {

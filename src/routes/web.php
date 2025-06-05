@@ -21,7 +21,6 @@ Route::post('/register', [UserController::class, 'userStore']);
 Route::post('/login', [UserController::class, 'userLogin']);
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'detail']);
-Route::post('/item/comment', [ItemController::class, 'commentPost']);
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
     Route::get('/mypage/profile', [ProfileController::class, 'profileEdit']);
@@ -29,5 +28,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [ProfileController::class, 'profile']);
     Route::post('/item/{item_id}/like', [ItemController::class, 'likeCreate']);
     Route::post('/item/{item_id}/not-like', [ItemController::class, 'likeDelete']);
+    Route::post('/item/comment', [ItemController::class, 'commentPost']);
     Route::post('/purchase/{item_id}', [ItemController::class, 'purchase']);
 });

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Like;
+use App\Http\Requests\CommentRequest;
 
 class ItemController extends Controller
 {
@@ -57,6 +58,16 @@ class ItemController extends Controller
     {
         $like = like::where('item_id', $item_id)->where('user_id', Auth::id())->first();
         $like->delete();
+        return back();
+    }
+
+    public function commentPost(CommentRequest $request)
+    {
+        comment::create([
+            'user_id' => Auth::id(),
+            'item_id' => $request->item_id,
+            'content' => $request->comment,
+        ]);
         return back();
     }
 

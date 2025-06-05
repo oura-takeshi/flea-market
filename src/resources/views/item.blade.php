@@ -98,8 +98,16 @@
         </div>
         <form class="comment-form" action="/item/comment" method="post">
             @csrf
+            <input type="hidden" name="item_id" value="{{ $item->id }}">
             <label class="comment-form__label" for="comment">商品へのコメント</label>
-            <textarea class="comment-form__textarea" name="comment" id="comment"></textarea>
+            <div class="comment-form__input-textarea">
+                <textarea class="comment-form__textarea" name="comment" id="comment"></textarea>
+                <div class="comment-form__error">
+                    @error('comment')
+                    {{ $message }}
+                    @enderror
+                </div>
+            </div>
             @if(Auth::check())
             <button class="comment-form__button-submit">コメントを送信する</button>
             @else
