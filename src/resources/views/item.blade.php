@@ -50,9 +50,9 @@
         <form class="purchase-form" action="/purchase/{{ $item->id }}" method="post">
             @csrf
             @if($item->purchase == null)
-            <button class="purchase-form__button-submit">購入手続きへ</button>
+            <button class="purchase-form__button-submit" type="submit">購入手続きへ</button>
             @else
-            <button class="purchase-form__button-submit disabled" disabled>購入手続きへ</button>
+            <button class="purchase-form__button-submit disabled" type="submit" disabled>購入手続きへ</button>
             @endif
         </form>
         <div class="item__group">
@@ -108,11 +108,7 @@
                     @enderror
                 </div>
             </div>
-            @if(Auth::check())
-            <button class="comment-form__button-submit">コメントを送信する</button>
-            @else
-            <button class="comment-form__button-submit disabled" disabled>コメントを送信する</button>
-            @endif
+            <button class="comment-form__button-submit" type="submit">コメントを送信する</button>
         </form>
     </div>
 </div>

@@ -116,8 +116,25 @@
 }
 
 @media screen and (max-width: 851px) {
+    .content {
+        margin: 22px auto;
+    }
+
     .profile-form__heading {
         font-size: 17px;
+        margin: 0 0 22px;
+    }
+
+    .form__group {
+        margin-bottom: 11px;
+    }
+
+    .form__group:first-of-type {
+        margin-bottom: 22px;
+    }
+
+    .form__group:last-of-type {
+        margin-bottom: 27px;
     }
 
     .form__select-button {
@@ -128,11 +145,19 @@
         font-size: 11px;
     }
 
+    .form__input-text input {
+        height: 22px;
+        border-radius: 2.2px;
+    }
+
     .form__error {
         font-size: 9px;
     }
 
     .form__button-submit {
+        height: 22px;
+        border-radius: 2.2px;
         font-size: 11px;
+        margin-bottom: 11px;
     }
 }

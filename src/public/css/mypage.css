@@ -167,11 +167,21 @@
         font-size: 11px;
     }
 
-    .item__name {
-        font-size: 11px;
+    .items {
+        row-gap: 32px;
+        margin: 32px 4vw;
+    }
+
+    .item__img {
+        border-radius: 2.7px;
     }
 
     .item__sold-label {
         font-size: 22px;
+    }
+
+    .item__name {
+        font-size: 11px;
+        margin: 2.2px 0;
     }
 }

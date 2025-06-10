@@ -9,7 +9,7 @@
     grid-column: 1;
     display: inline-block;
     margin: 1vw 6vw 1vw 2vw;
-    width: calc((100vw / 3) - 6vw);
+    width: calc((100vw / 3) - 8vw);
     height: auto;
 }
 

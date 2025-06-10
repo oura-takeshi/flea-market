@@ -18,7 +18,7 @@ class ItemController extends Controller
         $not_have_items = Item::where('user_id', '!=', $user_id)->get();
         $like_items = Item::whereHas('likes', function ($query) use ($user_id) {
             $query->where('user_id', $user_id);
-        })->get();
+        })->where('user_id', '!=', $user_id)->get();
         return view('index', compact('param', 'not_have_items', 'like_items'));
     }
 
@@ -71,8 +71,20 @@ class ItemController extends Controller
         return back();
     }
 
-    public function purchase($item_id)
+    public function purchaseConfirm($item_id)
     {
-        return view('purchase');
+        $item = Item::find($item_id);
+        $user = Auth::user();
+        $user_profile = $user->profile;
+        if ($user_profile == null) {
+            $post_code = null;
+            $address = null;
+            $building= null;
+        } else {
+            $post_code = $user_profile->post_code;
+            $address = $user_profile->address;
+            $building = $user_profile->building;
+        }
+        return view('purchase', compact('item', 'user', 'post_code', 'address', 'building'));
     }
 }

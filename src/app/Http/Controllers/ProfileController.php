@@ -13,10 +13,10 @@ class ProfileController extends Controller
 {
     public function profileEdit()
     {
-        $user_id = Auth::user()->id;
-        $user_name = Auth::user()->name;
-
         $user = Auth::user();
+        $user_id = $user->id;
+        $user_name = $user->name;
+
         $user_profile = $user->profile;
         if ($user_profile != null) {
             $profile_id = $user_profile->id;
@@ -50,7 +50,7 @@ class ProfileController extends Controller
         if ($user_profile == null) {
             if ($data != null) {
                 Profile::create([
-                    'user_id' => $request->user_id,
+                    'user_id' => Auth::id(),
                     'image' => 'storage/images/' . $file_name,
                     'post_code' => $request->post_code,
                     'address' => $request->address,
@@ -58,7 +58,7 @@ class ProfileController extends Controller
                 ]);
             } else {
                 Profile::create([
-                    'user_id' => $request->user_id,
+                    'user_id' => Auth::id(),
                     'image' => null,
                     'post_code' => $request->post_code,
                     'address' => $request->address,
@@ -102,5 +102,22 @@ class ProfileController extends Controller
 
         $items = Item::all();
         return view('mypage', compact('param', 'user_id', 'user_name', 'image', 'items'));
+    }
+
+    public function address($item_id) {
+        $user = Auth::user();
+        $user_profile = $user->profile;
+        if ($user_profile != null) {
+            $profile_id = $user_profile->id;
+            $post_code = $user_profile->post_code;
+            $address = $user_profile->address;
+            $building = $user_profile->building;
+        } else {
+            $profile_id = null;
+            $post_code = null;
+            $address = null;
+            $building = null;
+        }
+        return view('purchase_address', compact('user', 'profile_id', 'post_code', 'address', 'building'));
     }
 }

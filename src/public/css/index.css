@@ -12,8 +12,7 @@
     font-size: 20px;
     font-weight: 700;
     color: #ff0000;
-    margin: 7px 0;
-    margin-left: 13vw;
+    margin: 7px 0 7px 13vw;
 }
 
 .heading__mylist-link {
@@ -36,8 +35,7 @@
     font-size: 20px;
     font-weight: 700;
     color: #ff0000;
-    margin: 7px 0;
-    margin-left: 8vw;
+    margin: 7px 0 7px 8vw;
 }
 
 .items {
@@ -88,8 +86,13 @@
 }
 
 @media screen and (max-width: 851px){
+    .content {
+        margin-top: 19px;
+    }
+
     .heading__index-title {
         font-size: 11px;
+        margin: 4px 0 4px 13vw;
     }
 
     .heading__mylist-link {
@@ -102,13 +105,24 @@
 
     .heading__mylist-title {
         font-size: 11px;
+        margin: 4px 0 4px 8vw;
     }
 
-    .item__name {
-        font-size: 11px;
+    .items {
+        row-gap: 32px;
+        margin: 32px 4vw;
+    }
+
+    .item__img {
+        border-radius: 2.7px;
     }
 
     .item__sold-label {
         font-size: 22px;
+    }
+
+    .item__name {
+        font-size: 11px;
+        margin: 2px 0;
     }
 }

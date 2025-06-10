@@ -29,5 +29,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/item/{item_id}/like', [ItemController::class, 'likeCreate']);
     Route::post('/item/{item_id}/not-like', [ItemController::class, 'likeDelete']);
     Route::post('/item/comment', [ItemController::class, 'commentPost']);
-    Route::post('/purchase/{item_id}', [ItemController::class, 'purchase']);
+    Route::post('/purchase/{item_id}', [ItemController::class, 'purchaseConfirm']);
+    Route::get('/purchase/address/{item_id}', [profileController::class, 'address']);
 });

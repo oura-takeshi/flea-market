@@ -81,12 +81,30 @@
 }
 
 @media screen and (max-width: 851px) {
+    .content {
+        margin: 22px auto;
+    }
+
     .register-form__heading {
         font-size: 17px;
+        margin: 0 0 22px;
+    }
+
+    .form__group {
+        margin-bottom: 11px;
+    }
+
+    .form__group:last-of-type {
+        margin-bottom: 43px;
     }
 
     .form__label {
         font-size: 11px;
+    }
+
+    .form__input-text input {
+        height: 22px;
+        border-radius: 2.2px;
     }
 
     .form__error {
@@ -94,7 +112,10 @@
     }
 
     .form__button-submit {
+        height: 22px;
+        border-radius: 2.2px;
         font-size: 11px;
+        margin-bottom: 11px;
     }
 
     .login__button-submit {

@@ -38,7 +38,7 @@ class ItemsTableSeeder extends Seeder
                 'image' => 'storage/images/banana.png',
                 'post_code' => '000-1111',
                 'address' => 'sample-address',
-                'building' => null,
+                'building' => 'sample-building',
             ],
         ]);
         DB::table('items')->insert([
