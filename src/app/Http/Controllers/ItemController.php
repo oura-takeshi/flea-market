@@ -79,12 +79,16 @@ class ItemController extends Controller
         if ($user_profile == null) {
             $post_code = null;
             $address = null;
-            $building= null;
+            $building = null;
         } else {
             $post_code = $user_profile->post_code;
             $address = $user_profile->address;
             $building = $user_profile->building;
         }
         return view('purchase', compact('item', 'user', 'post_code', 'address', 'building'));
+    }
+
+    public function sell() {
+        return view('sell');
     }
 }

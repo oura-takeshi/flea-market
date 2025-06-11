@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="content">
-    <form class="purchase-form" action="">
+    <form class="purchase-form" action="/purchase" method="post">
         @csrf
         <div class="left-content">
             <div class="left-group">
