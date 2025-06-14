@@ -24,20 +24,12 @@
             <div class="icon">
                 @if($user_like == null)
                 @if(Auth::check())
-                <label class="icon__like-label" for="like">★</label>
-                <form class="like-form" action="/item/{{ $item->id }}/like" method="post">
-                    @csrf
-                    <input type="submit" value="いいね追加" id="like">
-                </form>
+                <a class="icon__like-link" href="/item/{{ $item->id }}/like">★</a>
                 @else
-                <a class="icon__like-label" href="/register">★</a>
+                <a class="icon__like-link" href="/register">★</a>
                 @endif
                 @else
-                <label class="icon__not-like-label" for="not-like">★</label>
-                <form class="not-like-form" action="/item/{{ $item->id }}/not-like" method="post">
-                    @csrf
-                    <input type="submit" value="いいね解除" id="not-like">
-                </form>
+                <a class="icon__not-like-link" href="/item/{{ $item->id }}/not-like">★</a>
                 @endif
                 <p class="icon__like-count">{{ $item_likes->count() }}</p>
             </div>
@@ -46,15 +38,11 @@
                 <p class="icon__comment-count">{{ $item_comments->count() }}</p>
             </div>
         </div>
-
-        <form class="purchase-form" action="/purchase/{{ $item->id }}" method="post">
-            @csrf
-            @if($item->purchase == null)
-            <button class="purchase-form__button-submit" type="submit">購入手続きへ</button>
-            @else
-            <button class="purchase-form__button-submit disabled" type="submit" disabled>購入手続きへ</button>
-            @endif
-        </form>
+        @if($item->purchase == null)
+        <a class="purchase-link" href="/purchase/{{ $item->id }}">購入手続きへ</a>
+        @else
+        <p class="purchase-p">購入手続きへ</p>
+        @endif
         <div class="item__group">
             <h2 class="item__desc">商品説明</h2>
             <p class="item__desc-text">{{ $item->description }}</p>

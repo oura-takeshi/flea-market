@@ -73,7 +73,7 @@
     align-items: center;
 }
 
-.icon__like-label {
+.icon__like-link {
     text-decoration: none;
     color: #5F5F5F;
     font-size: 36px;
@@ -82,21 +82,13 @@
     cursor: pointer;
 }
 
-.like-form {
-    display: none;
-}
-
-.icon__not-like-label {
+.icon__not-like-link {
     text-decoration: none;
     color: gold;
     font-size: 36px;
     line-height: 36px;
     margin: 0;
     cursor: pointer;
-}
-
-.not-like-form {
-    display: none;
 }
 
 .icon__like-count {
@@ -127,25 +119,31 @@
     font-size: 14px;
 }
 
-.purchase-form {
+.purchase-link {
+    display: block;
+    margin: 0 0 30px;
     width: 100%;
-    margin-bottom: 30px;
-}
-
-.purchase-form__button-submit {
-    width: 100%;
-    height: 40px;
-    border: none;
     border-radius: 4px;
     background-color: #FF5555;
     font-size: 20px;
+    line-height: 40px;
     font-weight: 700;
     color: #FFFFFF;
-    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
 }
 
-.disabled {
+.purchase-p {
+    margin: 0 0 30px;
+    width: 100%;
+    border-radius: 4px;
     background-color: #D9D9D9;
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
 }
 
 .item__desc {
@@ -355,12 +353,12 @@
         column-gap: 26px;
     }
 
-    .icon__like-label {
+    .icon__like-link {
         font-size: 19px;
         line-height: 19px;
     }
 
-    .icon__not-like-label {
+    .icon__not-like-link {
         font-size: 19px;
         line-height: 19px;
     }
@@ -384,14 +382,18 @@
         font-size: 8px;
     }
 
-    .purchase-procedure-form {
-        margin-bottom: 16px;
+    .purchase-link {
+        margin: 0 0 16px;
+        border-radius: 2.1px;
+        font-size: 11px;
+        line-height: 22px;
     }
 
-    .purchase-procedure-form__button-submit {
-        height: 22px;
+    .purchase-p {
+        margin: 0 0 16px;
+        border-radius: 2.1px;
         font-size: 11px;
-        border-radius: 2.2px;
+        line-height: 22px;
     }
 
     .item__desc {

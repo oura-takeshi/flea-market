@@ -7,11 +7,9 @@
 @section('content')
 <div class="content">
     <h1 class="address-form__heading">住所の変更</h1>
-    <form action="/mypage/profile" class="address-form" method="post" enctype="multipart/form-data">
+    <form action="/purchase/address" class="address-form" method="post" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="profile_id" value="{{ $profile_id }}">
-        <input type="hidden" name="user_id" value="{{ $user->id }}">
-        <input type="hidden" name="user_name" value="{{ $user->name }}">
         <div class="form__group">
             <label for="post_code" class="form__label">郵便番号</label>
             <div class="form__group-content">

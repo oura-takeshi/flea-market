@@ -7,7 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Like;
+use App\Models\Purchase;
+use App\Models\Category;
+use App\Models\Condition;
 use App\Http\Requests\CommentRequest;
+use App\Http\Requests\PurchaseRequest;
+use App\Http\Requests\ExhibitionRequest;
 
 class ItemController extends Controller
 {
@@ -47,17 +52,22 @@ class ItemController extends Controller
 
     public function likeCreate($item_id)
     {
-        like::create([
-            'user_id' => Auth::id(),
-            'item_id' => $item_id,
-        ]);
+        $exist_like = like::where('item_id', $item_id)->where('user_id', Auth::id())->first();
+        if ($exist_like == null) {
+            like::create([
+                'user_id' => Auth::id(),
+                'item_id' => $item_id,
+            ]);
+        }
         return back();
     }
 
     public function likeDelete($item_id)
     {
-        $like = like::where('item_id', $item_id)->where('user_id', Auth::id())->first();
-        $like->delete();
+        $exist_like = like::where('item_id', $item_id)->where('user_id', Auth::id())->first();
+        if ($exist_like != null) {
+            $exist_like->delete();
+        }
         return back();
     }
 
@@ -88,7 +98,30 @@ class ItemController extends Controller
         return view('purchase', compact('item', 'user', 'post_code', 'address', 'building'));
     }
 
-    public function sell() {
-        return view('sell');
+    public function purchase(PurchaseRequest $request)
+    {
+        Purchase::create([
+            'user_id' => Auth::id(),
+            'item_id' => $request->item_id,
+            'post_code' => $request->post_code,
+            'address' => $request->address,
+            'building' => $request->building,
+            'payment_method' => $request->payment_method,
+        ]);
+        return redirect('/');
+    }
+
+    public function sell()
+    {
+        $categories = Category::all();
+        $conditions = Condition::all();
+        return view('sell', compact('categories', 'conditions'));
+    }
+
+    public function exhibition(ExhibitionRequest $request)
+    {
+        $data = $request->all();
+        dd($data);
+        return redirect('/');
     }
 }

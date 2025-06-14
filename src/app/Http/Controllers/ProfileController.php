@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\Item;
 use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\AddressRequest;
 
 class ProfileController extends Controller
 {
@@ -104,7 +105,8 @@ class ProfileController extends Controller
         return view('mypage', compact('param', 'user_id', 'user_name', 'image', 'items'));
     }
 
-    public function address($item_id) {
+    public function addressEdit($item_id)
+    {
         $user = Auth::user();
         $user_profile = $user->profile;
         if ($user_profile != null) {
@@ -119,5 +121,25 @@ class ProfileController extends Controller
             $building = null;
         }
         return view('purchase_address', compact('user', 'profile_id', 'post_code', 'address', 'building'));
+    }
+
+    public function addressUpdate(AddressRequest $request)
+    {
+        $profile_id = $request->profile_id;
+        if ($profile_id == null) {
+            Profile::create([
+                'user_id' => Auth::id(),
+                'post_code' => $request->post_code,
+                'address' => $request->address,
+                'building' => $request->building,
+            ]);
+        } else {
+            Profile::find($request->profile_id)->update([
+                'post_code' => $request->post_code,
+                'address' => $request->address,
+                'building' => $request->building,
+            ]);
+        }
+        return redirect('/');
     }
 }

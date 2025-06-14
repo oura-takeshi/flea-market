@@ -20,24 +20,38 @@
             </div>
             <div class="left-group">
                 <label class="payment-method__label" for="payment-method">支払い方法</label>
-                <select class="payment-method__select" name="payment-method" id="payment-method" onchange="updateText(this)">
-                    <option value="" selected disabled hidden>選択してください</option>
-                    <option value="1">コンビニ払い</option>
-                    <option value="2">カード支払い</option>
-                </select>
+                <div class="left-group__content">
+                    <select class="payment-method__select" name="payment_method" id="payment-method" onchange="updateText(this)">
+                        <option selected hidden value="">選択してください</option>
+                        <option value="1">コンビニ払い</option>
+                        <option value="2">カード支払い</option>
+                    </select>
+                    <div class="form__error">
+                        @error('payment_method')
+                        {{ $message }}
+                        @enderror
+                    </div>
+                </div>
             </div>
             <div class="left-group">
                 <div class="address__head">
                     <div class="address__title">配送先</div>
                     <a class="address__purchass-address-link" href="/purchase/address/{{ $item->id }}">変更する</a>
                 </div>
-                @if($user->profile != null)
-                <div class="address__body">
-                    <p class="address__body-p">〒&nbsp;{{ $post_code }}</p>
-                    <p class="address__body-p">{{ $address }}</p>
-                    <p class="address__body-p">{{ $building }}</p>
+                <div class="left-group__content">
+                    @if($user->profile != null)
+                    <div class="address__body">
+                        <p class="address__body-p">〒&nbsp;{{ $post_code }}</p>
+                        <p class="address__body-p">{{ $address }}</p>
+                        <p class="address__body-p">{{ $building }}</p>
+                    </div>
+                    @endif
+                    <div class="form__error">
+                        @error('post_code')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
-                @endif
             </div>
         </div>
         <div class="right-content">
