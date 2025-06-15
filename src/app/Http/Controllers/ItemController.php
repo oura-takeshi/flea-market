@@ -10,6 +10,7 @@ use App\Models\Like;
 use App\Models\Purchase;
 use App\Models\Category;
 use App\Models\Condition;
+use App\Models\CategoryItem;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\PurchaseRequest;
 use App\Http\Requests\ExhibitionRequest;
@@ -120,8 +121,25 @@ class ItemController extends Controller
 
     public function exhibition(ExhibitionRequest $request)
     {
-        $data = $request->all();
-        dd($data);
+        $file_name = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/images', $file_name);
+        $item = Item::create([
+            'user_id' => Auth::id(),
+            'condition_id' => $request->condition_id,
+            'image' => 'storage/images/' . $file_name,
+            'name' => $request->name,
+            'brand' => $request->brand,
+            'price' => $request->price,
+            'description' => $request->description,
+        ]);
+
+        $category_ids = $request->category_id;
+        foreach($category_ids as $category_id) {
+            CategoryItem::create([
+                'item_id' => $item->id,
+                'category_id' => $category_id,
+            ]);
+        }
         return redirect('/');
     }
 }

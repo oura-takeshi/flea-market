@@ -7,7 +7,7 @@
 @section('content')
 <div class="content">
     <h1 class="item-form__heading">商品の出品</h1>
-    <form class="item-form" action="/exhibition" method="post">
+    <form class="item-form" action="/exhibition" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form__group">
             <div class="form__group-body">
@@ -35,7 +35,7 @@
                     <div class="form__unit-content">
                         <div class="form__input-checkbox">
                             @foreach ($categories as $category)
-                            <input type="checkbox" name="category_id[]" id="{{ $category->id }}">
+                            <input type="checkbox" name="category_id[]" id="{{ $category->id }}" value="{{ $category->id }}">
                             <label for="{{ $category->id }}">{{ $category->content }}</label>
                             @endforeach
                         </div>
