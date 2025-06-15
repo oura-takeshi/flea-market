@@ -30,17 +30,17 @@
         <div class="form__group">
             <h2 class="form__group-title">商品の詳細</h2>
             <div class="form__group-body">
-                <div class="form__unit">
+                <div class="form__unit category">
                     <label class="form__unit-label" for="">カテゴリー</label>
                     <div class="form__unit-content">
                         <div class="form__input-checkbox">
                             @foreach ($categories as $category)
-                            <input type="checkbox" name="category[]" id="{{ $category->id }}">
+                            <input type="checkbox" name="category_id[]" id="{{ $category->id }}">
                             <label for="{{ $category->id }}">{{ $category->content }}</label>
                             @endforeach
                         </div>
                         <div class="form__error">
-                            @error('category')
+                            @error('category_id')
                             {{ $message }}
                             @enderror
                         </div>
