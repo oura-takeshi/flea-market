@@ -19,13 +19,21 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
+        $keyword = $request->session()->get('keyword', '');
         $param = $request->page;
         $user_id = Auth::id();
-        $not_have_items = Item::where('user_id', '!=', $user_id)->get();
+        $not_have_items = Item::where('user_id', '!=', $user_id)->where('name', 'LIKE', "%{$keyword}%")->get();
         $like_items = Item::whereHas('likes', function ($query) use ($user_id) {
             $query->where('user_id', $user_id);
-        })->where('user_id', '!=', $user_id)->get();
-        return view('index', compact('param', 'not_have_items', 'like_items'));
+        })->where('user_id', '!=', $user_id)->where('name', 'LIKE', "%{$keyword}%")->get();
+        return view('index', compact('keyword', 'param', 'not_have_items', 'like_items'));
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->keyword;
+        $request->session()->put('keyword', $keyword);
+        return redirect('/');
     }
 
     public function detail($item_id)
@@ -85,6 +93,11 @@ class ItemController extends Controller
     public function purchaseConfirm($item_id)
     {
         $item = Item::find($item_id);
+        $exist_purchase = Purchase::where('item_id', $item_id)->first();
+        if ($exist_purchase != null) {
+            return redirect('/');
+        }
+
         $user = Auth::user();
         $user_profile = $user->profile;
         if ($user_profile == null) {
@@ -101,9 +114,15 @@ class ItemController extends Controller
 
     public function purchase(PurchaseRequest $request)
     {
+        $item_id = $request->item_id;
+        $exist_purchase = Purchase::where('item_id', $item_id)->first();
+        if ($exist_purchase != null) {
+            return redirect('/');
+        }
+
         Purchase::create([
             'user_id' => Auth::id(),
-            'item_id' => $request->item_id,
+            'item_id' => $item_id,
             'post_code' => $request->post_code,
             'address' => $request->address,
             'building' => $request->building,

@@ -14,9 +14,13 @@
 <body>
     <header class="header">
         <img class="header__img-logo" src="{{ asset('storage/images/logo.svg') }}" alt="coachtech">
-        <form action="" class="search-form" method="get">
+        <form action="/" class="search-form" method="post">
             @csrf
+            @isset($keyword)
+            <input type="text" class="search-form__keyword-input" type="text" name="keyword" value="{{ $keyword }}">
+            @else
             <input type="text" class="search-form__keyword-input" type="text" name="keyword" placeholder="なにをお探しですか？">
+            @endisset
         </form>
         <nav class="nav">
             @if (Auth::check())

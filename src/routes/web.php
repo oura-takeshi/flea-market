@@ -20,6 +20,7 @@ use App\Http\Controllers\ProfileController;
 Route::post('/register', [UserController::class, 'userStore']);
 Route::post('/login', [UserController::class, 'userLogin']);
 Route::get('/', [ItemController::class, 'index']);
+Route::post('/', [ItemController::class, 'search']);
 Route::get('/item/{item_id}', [ItemController::class, 'detail']);
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
