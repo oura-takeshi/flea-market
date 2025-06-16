@@ -35,7 +35,7 @@
                     <div class="form__unit-content">
                         <div class="form__input-checkbox">
                             @foreach ($categories as $category)
-                            <input type="checkbox" name="category_id[]" id="{{ $category->id }}" value="{{ $category->id }}">
+                            <input type="checkbox" name="category_id[]" id="{{ $category->id }}" value="{{ $category->id }}" {{ !empty(old('category_id')) && in_array((string)$category->id, old('category_id'), true) ? 'checked' : ''}}>
                             <label for="{{ $category->id }}">{{ $category->content }}</label>
                             @endforeach
                         </div>
@@ -52,7 +52,7 @@
                         <select class="form__select" name="condition_id" id="condition_id">
                             <option selected hidden value="">選択してください</option>
                             @foreach ($conditions as $condition)
-                            <option value="{{ $condition->id }}">{{ $condition->content }}</option>
+                            <option value="{{ $condition->id }}" {{ old('condition_id')==$condition->id ? 'selected' : '' }}>{{ $condition->content }}</option>
                             @endforeach
                         </select>
                         <div class="form__error">
@@ -71,7 +71,7 @@
                     <label class="form__unit-label" for="name">商品名</label>
                     <div class="form__unit-content">
                         <div class="form__input-text">
-                            <input type="text" id="name" name="name">
+                            <input type="text" id="name" name="name" value="{{ old('name') }}">
                         </div>
                         <div class="form__error">
                             @error('name')
@@ -84,7 +84,7 @@
                     <label class="form__unit-label" for="brand">ブランド名</label>
                     <div class="form__unit-content">
                         <div class="form__input-text">
-                            <input type="text" id="brand" name="brand">
+                            <input type="text" id="brand" name="brand" value="{{ old('brand') }}">
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                     <label class="form__unit-label" for="description">商品の説明</label>
                     <div class="form__unit-content">
                         <div class="form__textarea">
-                            <textarea name="description" id="description"></textarea>
+                            <textarea name="description" id="description">{{ old('description') }}</textarea>
                         </div>
                         <div class="form__error">
                             @error('description')
@@ -105,7 +105,7 @@
                     <label class="form__unit-label" for="price">販売価格</label>
                     <div class="form__unit-content">
                         <div class="form__input-text yen">
-                            <input type="text" id="price" name="price">
+                            <input type="text" id="price" name="price" value="{{ old('price') }}">
                         </div>
                         <div class="form__error">
                             @error('price')

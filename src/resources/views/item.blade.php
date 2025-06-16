@@ -89,7 +89,7 @@
             <input type="hidden" name="item_id" value="{{ $item->id }}">
             <label class="comment-form__label" for="comment">商品へのコメント</label>
             <div class="comment-form__input-textarea">
-                <textarea class="comment-form__textarea" name="comment" id="comment"></textarea>
+                <textarea class="comment-form__textarea" name="comment" id="comment">{{ old('comment') }}</textarea>
                 <div class="comment-form__error">
                     @error('comment')
                     {{ $message }}

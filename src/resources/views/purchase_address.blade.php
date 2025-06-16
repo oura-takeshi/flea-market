@@ -14,7 +14,7 @@
             <label for="post_code" class="form__label">郵便番号</label>
             <div class="form__group-content">
                 <div class="form__input-text">
-                    <input type="text" name="post_code" id="post_code" value="{{ $post_code }}">
+                    <input type="text" name="post_code" id="post_code" value="{{ old('post_code', $post_code) }}">
                 </div>
                 <div class="form__error">
                     @error('post_code')
@@ -27,7 +27,7 @@
             <label for="address" class="form__label">住所</label>
             <div class="form__group-content">
                 <div class="form__input-text">
-                    <input type="text" name="address" id="address" value="{{ $address }}">
+                    <input type="text" name="address" id="address" value="{{ old('address', $address) }}">
                 </div>
                 <div class="form__error">
                     @error('address')
@@ -40,7 +40,7 @@
             <label for="building" class="form__label">建物名</label>
             <div class="form__group-content">
                 <div class="form__input-text">
-                    <input type="text" name="building" id="building" value="{{ $building }}">
+                    <input type="text" name="building" id="building" value="{{ old('building', $building) }}">
                 </div>
             </div>
         </div>
