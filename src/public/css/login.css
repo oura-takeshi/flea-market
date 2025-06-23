@@ -82,7 +82,7 @@
     margin-bottom: 20px;
 }
 
-.register__button-submit {
+.register-link {
     font-size: 16px;
     font-weight: 400;
     color: #0073CC;
@@ -132,7 +132,7 @@
         margin-bottom: 11px;
     }
 
-    .register__button-submit {
+    .register-link {
         font-size: 9px;
     }
 }

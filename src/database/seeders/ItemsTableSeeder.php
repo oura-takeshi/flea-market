@@ -26,19 +26,14 @@ class ItemsTableSeeder extends Seeder
                 'email' => 'fuga@example.com',
                 'password' => Hash::make('fuga1234'),
             ],
-            [
-                'name' => 'piyo',
-                'email' => 'piyo@example.com',
-                'password' => Hash::make('piyo1234'),
-            ],
         ]);
         DB::table('profiles')->insert([
             [
                 'user_id' => '1',
-                'image' => 'storage/images/banana.png',
+                'image' => null,
                 'post_code' => '000-1111',
                 'address' => 'sample-address',
-                'building' => 'sample-building',
+                'building' => null,
             ],
         ]);
         DB::table('items')->insert([
@@ -142,62 +137,11 @@ class ItemsTableSeeder extends Seeder
                 'building' => null,
                 'payment_method' => '1',
             ],
-            [
-                'user_id' => '1',
-                'item_id' => '7',
-                'post_code' => '000-1111',
-                'address' => 'sample-address',
-                'building' => null,
-                'payment_method' => '2',
-            ],
-            [
-                'user_id' => '2',
-                'item_id' => '1',
-                'post_code' => '000-2222',
-                'address' => 'sample-address',
-                'building' => null,
-                'payment_method' => '1',
-            ],
         ]);
         DB::table('comments')->insert([
             [
                 'user_id' => '1',
                 'item_id' => '6',
-                'content' => 'sample-comment-1',
-            ],
-            [
-                'user_id' => '1',
-                'item_id' => '6',
-                'content' => 'sample-comment-2',
-            ],
-            [
-                'user_id' => '1',
-                'item_id' => '7',
-                'content' => 'sample-comment',
-            ],
-            [
-                'user_id' => '1',
-                'item_id' => '8',
-                'content' => 'sample-comment',
-            ],
-            [
-                'user_id' => '1',
-                'item_id' => '9',
-                'content' => 'sample-comment',
-            ],
-            [
-                'user_id' => '2',
-                'item_id' => '1',
-                'content' => 'sample-comment',
-            ],
-            [
-                'user_id' => '2',
-                'item_id' => '2',
-                'content' => 'sample-comment',
-            ],
-            [
-                'user_id' => '3',
-                'item_id' => '1',
                 'content' => 'sample-comment',
             ],
         ]);
@@ -205,22 +149,6 @@ class ItemsTableSeeder extends Seeder
             [
                 'user_id' => '1',
                 'item_id' => '6',
-            ],
-            [
-                'user_id' => '1',
-                'item_id' => '8',
-            ],
-            [
-                'user_id' => '2',
-                'item_id' => '1',
-            ],
-            [
-                'user_id' => '2',
-                'item_id' => '2',
-            ],
-            [
-                'user_id' => '3',
-                'item_id' => '1',
             ],
         ]);
     }

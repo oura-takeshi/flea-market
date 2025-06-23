@@ -43,6 +43,11 @@ php artisan migrate
 php artisan db:seed
 ```
 
+## userのログイン用初期データ
+
+- メールアドレス: hoge@example.com パスワード: hoge1234
+- メールアドレス: fuga@example.com パスワード: fuga1234
+
 ## 使用技術(実行環境)
 - PHP7.4.9
 - Laravel8.83.8

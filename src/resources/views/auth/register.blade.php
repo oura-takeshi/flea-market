@@ -63,6 +63,6 @@
         </div>
         <button class="form__button-submit" type="submit">登録する</button>
     </form>
-    <a class="login__button-submit" href="/login">ログインはこちら</a>
+    <a class="login-link" href="/login">ログインはこちら</a>
 </div>
 @endsection
