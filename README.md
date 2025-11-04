@@ -45,13 +45,115 @@ php artisan db:seed
 
 ## userのログイン用初期データ
 
-- メールアドレス: hoge@example.com パスワード: hoge1234
-- メールアドレス: fuga@example.com パスワード: fuga1234
+メールアドレス: hoge@example.com  
+パスワード: hoge1234  
+CO01～CO05の商品を出品
+
+メールアドレス: fuga@example.com  
+パスワード: fuga1234  
+CO06～CO10の商品を出品
+
+メールアドレス: piyo@example.com  
+パスワード: piyo1234
 
 ## 使用技術(実行環境)
 - PHP7.4.9
 - Laravel8.83.8
 - MySQL8.0.26
+
+## テーブル仕様
+### usersテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |
+| name | varchar(255) |  |  | ◯ |  |
+| email | varchar(255) |  | ◯ | ◯ |  |
+| password | varchar(255) |  |  | ◯ |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### itemsテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |
+| user_id | unsigned bigint |  |  | ◯ | users(id) |
+| image | varchar(255) |  |  | ◯ |  |
+| name | varchar(255) |  |  | ◯ |  |
+| brand | varchar(255) |  |  |  |  |
+| price | int |  |  | ◯ |  |
+| description | text |  |  | ◯ |  |
+| condition_id | unsigned bigint |  |  | ◯ | conditions(id) |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### profilesテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |
+| user_id | unsigned bigint |  |  | ◯ | users(id) |
+| image | varchar(255) |  |  |  |  |
+| post_code | varchar(255) |  |  | ◯ |  |
+| address | varchar(255) |  |  | ◯ |  |
+| building | varchar(255) |  |  |  |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### purchasesテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key | 補足 |
+| --- | --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |  |
+| user_id | unsigned bigint |  |  | ◯ | users(id) |  |
+| item_id | unsigned bigint |  |  | ◯ | items(id) |  |
+| post_code | varchar(255) |  |  | ◯ |  |  |
+| address | varchar(255) |  |  | ◯ |  |  |
+| building | varchar(255) |  |  |  |  |  |
+| payment_method | tinyint |  |  | ◯ |  | 1:コンビニ払い 2:カード払い |  |
+| created_at | timestamp |  |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |  |
+
+### categoriesテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |
+| content | varchar(255) |  |  | ◯ |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### conditionsテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |
+| content | varchar(255) |  |  | ◯ |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### commentsテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |
+| user_id | unsigned bigint |  |  | ◯ | users(id) |
+| item_id | unsigned bigint |  |  | ◯ | items(id) |
+| content | varchar(255) |  |  | ◯ |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### category_itemテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |
+| item_id | unsigned bigint |  |  | ◯ | items(id) |
+| category_id | unsigned bigint |  |  | ◯ | categories(id) |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
+### likesテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |
+| user_id | unsigned bigint |  |  | ◯ | users(id) |
+| item_id | unsigned bigint |  |  | ◯ | items(id) |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
 
 ## ER図
 ![alt](erd.png)

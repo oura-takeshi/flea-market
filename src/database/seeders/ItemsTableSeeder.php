@@ -26,6 +26,11 @@ class ItemsTableSeeder extends Seeder
                 'email' => 'fuga@example.com',
                 'password' => Hash::make('fuga1234'),
             ],
+            [
+                'name' => 'piyo',
+                'email' => 'piyo@example.com',
+                'password' => Hash::make('piyo1234'),
+            ],
         ]);
         DB::table('profiles')->insert([
             [
