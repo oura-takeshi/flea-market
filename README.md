@@ -168,7 +168,7 @@ CO06～CO10の商品を出品
 | user_id | unsigned bigint |  |  | ◯ | users(id) |  |
 | content | text |  |  | ◯ |  |  |
 | image | varchar(255) |  |  |  |  |  |
-| is_read | boolean |  |  |  |  | true:既読 false:未読 |
+| is_read | boolean |  |  | ◯ |  | true:既読 false:未読 |
 | created_at | timestamp |  |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |  |
 
