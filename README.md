@@ -138,7 +138,7 @@ CO06～CO10の商品を出品
 | id | unsigned bigint | ◯ |  | ◯ |  |
 | user_id | unsigned bigint |  |  | ◯ | users(id) |
 | item_id | unsigned bigint |  |  | ◯ | items(id) |
-| content | varchar(255) |  |  | ◯ |  |
+| content | text |  |  | ◯ |  |
 | created_at | timestamp |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |
 
@@ -159,6 +159,18 @@ CO06～CO10の商品を出品
 | item_id | unsigned bigint |  |  | ◯ | items(id) |
 | created_at | timestamp |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |
+
+### chat_messagesテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key | 補足 |
+| --- | --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |  |
+| purchase_id | unsigned bigint |  |  | ◯ | purchases(id) |  |
+| user_id | unsigned bigint |  |  | ◯ | users(id) |  |
+| content | text |  |  | ◯ |  |  |
+| image | varchar(255) |  |  |  |  |  |
+| is_read | boolean |  |  |  |  | true:既読 false:未読 |
+| created_at | timestamp |  |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |  |
 
 ## ER図
 ![alt](erd.png)
