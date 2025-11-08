@@ -28,8 +28,8 @@ class Purchase extends Model
         return $this->belongsTo(Item::class);
     }
 
-    public function chatMessages()
+    public function chat()
     {
-        return $this->hasMany(ChatMessage::class);
+        return $this->hasOne(Chat::class);
     }
 }

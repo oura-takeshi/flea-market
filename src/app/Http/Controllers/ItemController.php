@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Purchase;
 use App\Models\Category;
+use App\Models\Chat;
 use App\Models\Condition;
 use App\Models\CategoryItem;
 use App\Http\Requests\CommentRequest;
@@ -120,13 +121,17 @@ class ItemController extends Controller
             return redirect('/');
         }
 
-        Purchase::create([
+        $purchase = Purchase::create([
             'user_id' => Auth::id(),
             'item_id' => $item_id,
             'post_code' => $request->post_code,
             'address' => $request->address,
             'building' => $request->building,
             'payment_method' => $request->payment_method,
+        ]);
+
+        Chat::create([
+            'purchase_id' => $purchase->id,
         ]);
         return redirect('/');
     }
@@ -153,7 +158,7 @@ class ItemController extends Controller
         ]);
 
         $category_ids = $request->category_id;
-        foreach($category_ids as $category_id) {
+        foreach ($category_ids as $category_id) {
             CategoryItem::create([
                 'item_id' => $item->id,
                 'category_id' => $category_id,

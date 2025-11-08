@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->hasMany(Purchase::class);
     }
 
+    public function chats()
+    {
+        return $this->hasManyThrough(Chat::class, Purchase::class);
+    }
+
     public function chatMessages()
     {
         return $this->hasMany(ChatMessage::class);

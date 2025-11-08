@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ConditionsTableSeeder::class,
             ItemsTableSeeder::class,
             CategoryItemTableSeeder::class,
+            ChatsTableSeeder::class,
         ]);
     }
 }

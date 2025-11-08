@@ -40,6 +40,20 @@ class ItemsTableSeeder extends Seeder
                 'address' => 'sample-address',
                 'building' => null,
             ],
+            [
+                'user_id' => '2',
+                'image' => null,
+                'post_code' => '000-2222',
+                'address' => 'sample-address',
+                'building' => null,
+            ],
+            [
+                'user_id' => '3',
+                'image' => null,
+                'post_code' => '000-3333',
+                'address' => 'sample-address',
+                'building' => null,
+            ],
         ]);
         DB::table('items')->insert([
             [
@@ -153,6 +167,14 @@ class ItemsTableSeeder extends Seeder
             [
                 'user_id' => '1',
                 'item_id' => '8',
+                'post_code' => '000-1111',
+                'address' => 'sample-address',
+                'building' => null,
+                'payment_method' => '1',
+            ],
+            [
+                'user_id' => '2',
+                'item_id' => '1',
                 'post_code' => '000-1111',
                 'address' => 'sample-address',
                 'building' => null,
