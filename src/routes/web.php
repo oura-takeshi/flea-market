@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
@@ -36,4 +37,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/purchase', [ItemController::class, 'purchase']);
     Route::get('/sell', [ItemController::class, 'sell']);
     Route::post('/exhibition', [ItemController::class, 'exhibition']);
+    Route::get('/chat/{chat_id}', [ChatController::class, 'chat']);
 });

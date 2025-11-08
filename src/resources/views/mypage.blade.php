@@ -81,7 +81,7 @@
         @foreach ($active_items as $item)
         <div class="item">
             <div class="item__top-content">
-                <a href="/item/{{$item->id}}" class="item__link">
+                <a href="/chat/{{$item->purchase->chat->id}}" class="item__link">
                     <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
                 </a>
             </div>
