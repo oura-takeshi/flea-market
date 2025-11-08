@@ -23,16 +23,24 @@
         <div class="heading">
             @switch($param)
             @case("sell")
-            <p class="heading__sell-title">出品した商品</p>
-            <a href="/mypage?page=buy" class="heading__buy-link">購入した商品</a>
+            <p class="heading__sell para">出品した商品</p>
+            <a href="/mypage?page=buy" class="heading__buy link">購入した商品</a>
+            <a href="/mypage?page=deal" class="heading__deal link">取引中の商品</a>
             @break
             @case("buy")
-            <a href="/mypage?page=sell" class="heading__sell-link">出品した商品</a>
-            <p class="heading__buy-title">購入した商品</p>
+            <a href="/mypage?page=sell" class="heading__sell link">出品した商品</a>
+            <p class="heading__buy para">購入した商品</p>
+            <a href="/mypage?page=deal" class="heading__deal link">取引中の商品</a>
+            @break
+            @case("deal")
+            <a href="/mypage?page=sell" class="heading__sell link">出品した商品</a>
+            <a href="/mypage?page=buy" class="heading__buy link">購入した商品</a>
+            <p class="heading__deal para">取引中の商品</p>
             @break
             @default
-            <a href="/mypage?page=sell" class="heading__sell-link">出品した商品</a>
-            <a href="/mypage?page=buy" class="heading__buy-link">購入した商品</a>
+            <a href="/mypage?page=sell" class="heading__sell link">出品した商品</a>
+            <a href="/mypage?page=buy" class="heading__buy link">購入した商品</a>
+            <a href="/mypage?page=deal" class="heading__deal link">取引中の商品</a>
             @endswitch
         </div>
     </div>

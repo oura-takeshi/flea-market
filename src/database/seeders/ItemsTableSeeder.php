@@ -142,6 +142,22 @@ class ItemsTableSeeder extends Seeder
                 'building' => null,
                 'payment_method' => '1',
             ],
+            [
+                'user_id' => '1',
+                'item_id' => '7',
+                'post_code' => '000-1111',
+                'address' => 'sample-address',
+                'building' => null,
+                'payment_method' => '1',
+            ],
+            [
+                'user_id' => '1',
+                'item_id' => '8',
+                'post_code' => '000-1111',
+                'address' => 'sample-address',
+                'building' => null,
+                'payment_method' => '1',
+            ],
         ]);
         DB::table('comments')->insert([
             [

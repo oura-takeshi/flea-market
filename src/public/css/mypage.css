@@ -65,34 +65,31 @@
     margin-bottom: 0.3vw;
 }
 
-.heading__sell-link {
-    font-size: 20px;
-    font-weight: 700;
-    color: #5f5f5f;
+.heading__sell {
     margin-left: 9vw;
-    text-decoration: none;
 }
 
-.heading__buy-link {
+.heading__buy {
+    margin-left: 3vw;
+}
+
+.heading__deal {
+    margin-left: 3vw;
+}
+
+.para {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FF5555;
+}
+
+.link {
     font-size: 20px;
     font-weight: 700;
     color: #5f5f5f;
-    margin-left: 3vw;
     text-decoration: none;
-}
-
-.heading__sell-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #FF5555;
-    margin: 0 0 0 9vw;
-}
-
-.heading__buy-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #FF5555;
-    margin: 0 0 0 3vw;
 }
 
 .items {
@@ -152,19 +149,11 @@
         font-size: 11px;
     }
 
-    .heading__sell-link {
+    .para {
         font-size: 11px;
     }
 
-    .heading__buy-link {
-        font-size: 11px;
-    }
-
-    .heading__sell-title {
-        font-size: 11px;
-    }
-
-    .heading__buy-title {
+    .link {
         font-size: 11px;
     }
 
