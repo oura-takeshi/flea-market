@@ -10,7 +10,7 @@ class ChatMessage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'purchase_id',
+        'chat_id',
         'user_id',
         'content',
         'image',
@@ -21,9 +21,9 @@ class ChatMessage extends Model
         'is_read' => 'boolean',
     ];
 
-    public function purchase()
+    public function chat()
     {
-        return $this->belongsTo(Purchase::class);
+        return $this->belongsTo(Chat::class);
     }
 
     public function user()

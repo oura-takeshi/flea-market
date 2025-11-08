@@ -160,11 +160,20 @@ CO06～CO10の商品を出品
 | created_at | timestamp |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |
 
+### chatsテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key | 補足 |
+| --- | --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |  |
+| purchase_id | unsigned bigint |  | ◯ | ◯ | purchases(id) |  |
+| is_finished | boolean |  |  | ◯ |  | true:取引終了 false:取引中 |
+| created_at | timestamp |  |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |  |
+
 ### chat_messagesテーブル
 | カラム名 | 型 | primary key | unique key | not null | foreign key | 補足 |
 | --- | --- | --- | --- | --- | --- | --- |
 | id | unsigned bigint | ◯ |  | ◯ |  |  |
-| purchase_id | unsigned bigint |  |  | ◯ | purchases(id) |  |
+| chat_id | unsigned bigint |  |  | ◯ | chats(id) |  |
 | user_id | unsigned bigint |  |  | ◯ | users(id) |  |
 | content | text |  |  | ◯ |  |  |
 | image | varchar(255) |  |  |  |  |  |
