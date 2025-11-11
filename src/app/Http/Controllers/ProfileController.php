@@ -103,20 +103,7 @@ class ProfileController extends Controller
 
         $items = Item::all();
 
-        $active_items = Item::whereIn('id', function ($query) use ($user) {
-            $query->select('item_id')
-            ->from('purchases')
-            ->join('chats', 'purchases.id', '=', 'chats.purchase_id')
-                ->where('chats.is_finished', false)
-                ->where(function ($q) use ($user) {
-                    $q->where('purchases.user_id', $user->id)
-                        ->orWhereIn('purchases.item_id', function ($sub) use ($user) {
-                            $sub->select('id')
-                                ->from('items')
-                                ->where('user_id', $user->id);
-                        });
-                });
-        })->get();
+        $active_items = $user->activeItems()->get();
 
         return view('mypage', compact('param', 'user_id', 'user_name', 'image', 'items', 'active_items'));
     }

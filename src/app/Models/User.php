@@ -76,4 +76,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(ChatMessage::class);
     }
+
+    public function activeChats()
+    {
+        return Chat::where('is_finished', false)->whereHas('purchase', function ($q) {
+            $q->where('user_id', $this->id)->orWhereHas('item', function ($sub) {
+                $sub->where('user_id', $this->id);
+            });
+        });
+    }
+
+    public function activeItems()
+    {
+        $user_id = $this->id;
+        return Item::whereHas('purchase.chat', function ($q) {
+            $q->where('is_finished', false);
+        })->where(function ($q) use ($user_id) {
+            $q->where('user_id', $user_id)->orWhereHas('purchase', function ($sub) use ($user_id){
+                $sub->where('user_id', $user_id);
+            });
+        });
+    }
 }
