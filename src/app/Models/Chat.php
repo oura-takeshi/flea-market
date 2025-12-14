@@ -27,4 +27,9 @@ class Chat extends Model
     {
         return $this->hasMany(ChatMessage::class);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

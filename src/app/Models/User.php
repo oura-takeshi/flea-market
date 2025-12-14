@@ -77,6 +77,16 @@ class User extends Authenticatable
         return $this->hasMany(ChatMessage::class);
     }
 
+    public function writtenReviews()
+    {
+        return $this->hasMany(Review::class, 'reviewer_id');
+    }
+
+    public function receivedReviews()
+    {
+        return $this->hasMany(Review::class, 'reviewee_id');
+    }
+
     public function activeChats()
     {
         return Chat::where('is_finished', false)->whereHas('purchase', function ($q) {
