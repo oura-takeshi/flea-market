@@ -181,6 +181,17 @@ CO06～CO10の商品を出品
 | created_at | timestamp |  |  |  |  |  |
 | updated_at | timestamp |  |  |  |  |  |
 
+### reviewsテーブル
+| カラム名 | 型 | primary key | unique key | not null | foreign key |
+| --- | --- | --- | --- | --- | --- |
+| id | unsigned bigint | ◯ |  | ◯ |  |
+| chat_id | unsigned bigint |  |  | ◯ | chats(id) |
+| reviewer_id | unsigned bigint |  |  | ◯ | users(id) |
+| reviewee_id | unsigned bigint |  |  | ◯ | users(id) |
+| score | tinyint |  |  | ◯ |  |
+| created_at | timestamp |  |  |  |  |
+| updated_at | timestamp |  |  |  |  |
+
 ## ER図
 ![alt](erd.png)
 
