@@ -92,6 +92,19 @@
     text-decoration: none;
 }
 
+.heading__total-unread-count {
+    display: inline-block;
+    padding: 0 5px;
+    margin-left: 5px;
+    background-color: #ff0000;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 22px;
+    border-radius: 8.4px;
+    text-align: center;
+}
+
 .items {
     display: flex;
     flex-wrap: wrap;
@@ -135,6 +148,22 @@
     text-decoration: none;
 }
 
+.item__unread-mark {
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    background-color: #ff0000;
+    color: #ffffff;
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    width: 28px;
+    line-height: 28px;
+    border-radius: 14px;
+    text-align: center;
+    text-decoration: none;
+}
+
 .item__name {
     font-size: 20px;
     margin: 4px 0;
@@ -157,6 +186,14 @@
         font-size: 11px;
     }
 
+    .heading__total-unread-count {
+        padding: 0 2.7px;
+        margin-left: 2.7px;
+        font-size: 11px;
+        line-height: 12px;
+        border-radius: 4.6px;
+    }
+
     .items {
         row-gap: 32px;
         margin: 32px 4vw;
@@ -168,6 +205,15 @@
 
     .item__sold-label {
         font-size: 22px;
+    }
+
+    .item__unread-mark {
+        top: 2.2px;
+        left: 1.6px;
+        font-size: 7.7px;
+        width: 15.4px;
+        line-height: 15.4px;
+        border-radius: 7.7px;
     }
 
     .item__name {

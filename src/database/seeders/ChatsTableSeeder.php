@@ -85,8 +85,8 @@ class ChatsTableSeeder extends Seeder
             [
                 'chat_id' => 2,
                 'user_id' => 2,
-                'content' => '【既読】購入ありがとうございます。発送準備を進めます。',
-                'is_read' => true,
+                'content' => '【未読】購入ありがとうございます。発送準備を進めます。',
+                'is_read' => false,
                 'created_at' => Carbon::now()->subMinute(),
                 'updated_at' => Carbon::now()->subMinute(),
             ],

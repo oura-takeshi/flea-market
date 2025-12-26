@@ -21,27 +21,29 @@
             <a href="/mypage/profile" class="profile-link">プロフィールを編集</a>
         </div>
         <div class="heading">
-            @switch($param)
-            @case("sell")
+            @if($param === "sell")
             <p class="heading__sell para">出品した商品</p>
-            <a href="/mypage?page=buy" class="heading__buy link">購入した商品</a>
-            <a href="/mypage?page=deal" class="heading__deal link">取引中の商品</a>
-            @break
-            @case("buy")
+            @else
             <a href="/mypage?page=sell" class="heading__sell link">出品した商品</a>
+            @endif
+            @if($param === "buy")
             <p class="heading__buy para">購入した商品</p>
-            <a href="/mypage?page=deal" class="heading__deal link">取引中の商品</a>
-            @break
-            @case("deal")
-            <a href="/mypage?page=sell" class="heading__sell link">出品した商品</a>
+            @else
             <a href="/mypage?page=buy" class="heading__buy link">購入した商品</a>
-            <p class="heading__deal para">取引中の商品</p>
-            @break
-            @default
-            <a href="/mypage?page=sell" class="heading__sell link">出品した商品</a>
-            <a href="/mypage?page=buy" class="heading__buy link">購入した商品</a>
-            <a href="/mypage?page=deal" class="heading__deal link">取引中の商品</a>
-            @endswitch
+            @endif
+            @if($param === "deal")
+            <p class="heading__deal para">取引中の商品
+                @if($total_unread_count > 0)
+                <span class="heading__total-unread-count">{{ $total_unread_count }}</span>
+                @endif
+            </p>
+            @else
+            <a href="/mypage?page=deal" class="heading__deal link">取引中の商品
+                @if($total_unread_count > 0)
+                <span class="heading__total-unread-count">{{ $total_unread_count }}</span>
+                @endif
+            </a>
+            @endif
         </div>
     </div>
     <div class="items">
@@ -78,14 +80,17 @@
         @endforeach
         @break
         @case("deal")
-        @foreach ($active_items as $item)
+        @foreach ($active_chats as $chat)
         <div class="item">
             <div class="item__top-content">
-                <a href="/chat/{{$item->purchase->chat->id}}" class="item__link">
-                    <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
+                <a href="/chat/{{$chat->id}}" class="item__link">
+                    <img src="{{ asset($chat->purchase->item->image) }}" alt="商品画像" class="item__img">
                 </a>
+                @if ($chat->unread_count > 0)
+                <a href="/chat/{{$chat->id}}" class="item__unread-mark">{{ $chat->unread_count }}</a>
+                @endif
             </div>
-            <p class="item__name">{{$item->name}}</p>
+            <p class="item__name">{{$chat->purchase->item->name}}</p>
         </div>
         @endforeach
         @break

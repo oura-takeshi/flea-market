@@ -96,6 +96,26 @@ class User extends Authenticatable
         });
     }
 
+    public function activeChatsWithUnreadCount()
+    {
+        $user_id = $this->id;
+        return Chat::where('is_finished', false)
+            ->whereHas('purchase', function ($q) use ($user_id) {
+                $q->where('user_id', $user_id)
+                    ->orWhereHas('item', function ($sub) use ($user_id) {
+                        $sub->where('user_id', $user_id);
+                    });
+            })
+            ->withCount([
+                'chatMessages as unread_count' => function ($q) use ($user_id) {
+                    $q->where('is_read', false)
+                        ->where('user_id', '!=', $user_id);
+                }
+            ])
+            ->withMax('chatMessages', 'created_at')
+            ->orderByDesc('chat_messages_max_created_at');
+    }
+
     public function activeItems()
     {
         $user_id = $this->id;

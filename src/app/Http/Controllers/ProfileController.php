@@ -105,7 +105,11 @@ class ProfileController extends Controller
 
         $active_items = $user->activeItems()->get();
 
-        return view('mypage', compact('param', 'user_id', 'user_name', 'image', 'items', 'active_items'));
+        $active_chats = $user->activeChatsWithUnreadCount()->get();
+
+        $total_unread_count = $active_chats->sum('unread_count');
+
+        return view('mypage', compact('param', 'user_id', 'user_name', 'image', 'items', 'active_chats', 'total_unread_count'));
     }
 
     public function addressEdit($item_id)
