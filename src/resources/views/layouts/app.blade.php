@@ -13,7 +13,7 @@
 
 <body>
     <header class="header">
-        <img class="header__img-logo" src="{{ asset('storage/images/logo.svg') }}" alt="coachtech">
+        <img class="header__img-logo" src="{{ asset('images/ui/logo.svg') }}" alt="coachtech">
         <form action="/" class="search-form" method="post">
             @csrf
             @isset($keyword)
