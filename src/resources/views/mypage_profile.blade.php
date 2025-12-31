@@ -14,7 +14,7 @@
         <div class="form__group">
             <div class="form__profile-image">
                 @if($image != null)
-                <img src="{{ asset($image) }}" alt="プロフ画像">
+                <img src="{{ asset('storage/' . $image) }}" alt="プロフ画像">
                 @else
                 <div></div>
                 @endif

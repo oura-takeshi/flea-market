@@ -87,6 +87,7 @@ class User extends Authenticatable
         return $this->hasMany(Review::class, 'reviewee_id');
     }
 
+    /*
     public function activeChats()
     {
         return Chat::where('is_finished', false)->whereHas('purchase', function ($q) {
@@ -95,6 +96,7 @@ class User extends Authenticatable
             });
         });
     }
+    */
 
     public function activeChatsWithUnreadCount()
     {
@@ -116,6 +118,7 @@ class User extends Authenticatable
             ->orderByDesc('chat_messages_max_created_at');
     }
 
+    /*
     public function activeItems()
     {
         $user_id = $this->id;
@@ -127,4 +130,5 @@ class User extends Authenticatable
             });
         });
     }
+    */
 }

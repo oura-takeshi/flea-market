@@ -16,7 +16,7 @@
         <div class="item">
             <div class="item__top-content">
                 <a href="/item/{{$item->id}}" class="item__link">
-                    <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像" class="item__img">
                 </a>
                 @if($item->purchase != null)
                 <a href="/item/{{$item->id}}" class="item__sold-label">sold</a>
@@ -37,7 +37,7 @@
         <div class="item">
             <div class="item__top-content">
                 <a href="/item/{{$item->id}}" class="item__link">
-                    <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像" class="item__img">
                 </a>
                 @if($item->purchase != null)
                 <a href="/item/{{$item->id}}" class="item__sold-label">sold</a>

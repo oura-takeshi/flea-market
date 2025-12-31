@@ -11,7 +11,7 @@
             <div class="profile-info">
                 <div class="profile-image">
                     @if($image != null)
-                    <img src="{{ asset($image) }}" alt="プロフ画像">
+                    <img src="{{ asset('storage/' . $image) }}" alt="プロフ画像">
                     @else
                     <div></div>
                     @endif
@@ -54,7 +54,7 @@
         <div class="item">
             <div class="item__top-content">
                 <a href="/item/{{$item->id}}" class="item__link">
-                    <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像" class="item__img">
                 </a>
                 @if($item->purchase != null)
                 <a href="/item/{{$item->id}}" class="item__sold-label">sold</a>
@@ -71,7 +71,7 @@
         <div class="item">
             <div class="item__top-content">
                 <a href="/item/{{$item->id}}" class="item__link">
-                    <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像" class="item__img">
                 </a>
             </div>
             <p class="item__name">{{$item->name}}</p>
@@ -84,7 +84,7 @@
         <div class="item">
             <div class="item__top-content">
                 <a href="/chat/{{$chat->id}}" class="item__link">
-                    <img src="{{ asset($chat->purchase->item->image) }}" alt="商品画像" class="item__img">
+                    <img src="{{ asset('storage/' . $chat->purchase->item->image) }}" alt="商品画像" class="item__img">
                 </a>
                 @if ($chat->unread_count > 0)
                 <a href="/chat/{{$chat->id}}" class="item__unread-mark">{{ $chat->unread_count }}</a>

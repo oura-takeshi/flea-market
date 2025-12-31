@@ -7,7 +7,7 @@
 @section('content')
 <div class="content">
     <div class="left-content">
-        <img src="{{ asset($item->image) }}" alt="商品画像" class="item__img">
+        <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像" class="item__img">
         @if($item->purchase != null)
         <div class="item__sold-label">sold</div>
         @endif
@@ -73,7 +73,7 @@
                 <div class="comment__user-info">
                     <div class="comment__user-image">
                         @if($comment->image != null)
-                        <img src="{{ asset($comment->image) }}" alt="プロフ画像">
+                        <img src="{{ asset('storage/' . $comment->image) }}" alt="プロフ画像">
                         @else
                         <div></div>
                         @endif

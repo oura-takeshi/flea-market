@@ -11,7 +11,7 @@
         <div class="left-content">
             <div class="left-group">
                 <div class="item__img">
-                    <img src="{{ asset($item->image) }}" alt="商品画像">
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像">
                 </div>
                 <div class="item__content">
                     <div class="item__name">{{ $item->name }}</div>

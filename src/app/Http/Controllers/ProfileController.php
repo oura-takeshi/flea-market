@@ -38,50 +38,30 @@ class ProfileController extends Controller
 
     public function profileUpdate(ProfileRequest $request)
     {
-        $data = $request->file('profile_image');
-        if ($data != null) {
-            $file_name = $request->file('profile_image')->getClientOriginalName();
-            $request->file('profile_image')->storeAs('public/images', $file_name);
-        }
+        $path = null;
 
-        User::find($request->user_id)->update(['name' => $request->user_name]);
+        if ($request->hasFile('profile_image')) {
+            $path = $request->file('profile_image')->store('images/users', 'public');
+        }
 
         $user = Auth::user();
-        $user_profile = $user->profile;
-        if ($user_profile == null) {
-            if ($data != null) {
-                Profile::create([
-                    'user_id' => Auth::id(),
-                    'image' => 'storage/images/' . $file_name,
-                    'post_code' => $request->post_code,
-                    'address' => $request->address,
-                    'building' => $request->building,
-                ]);
-            } else {
-                Profile::create([
-                    'user_id' => Auth::id(),
-                    'image' => null,
-                    'post_code' => $request->post_code,
-                    'address' => $request->address,
-                    'building' => $request->building,
-                ]);
-            }
-        } else {
-            if ($data != null) {
-                Profile::find($request->profile_id)->update([
-                    'image' => 'storage/images/' . $file_name,
-                    'post_code' => $request->post_code,
-                    'address' => $request->address,
-                    'building' => $request->building,
-                ]);
-            } else {
-                Profile::find($request->profile_id)->update([
-                    'post_code' => $request->post_code,
-                    'address' => $request->address,
-                    'building' => $request->building,
-                ]);
-            }
+
+        $user->update(['name' => $request->user_name]);
+
+        $profile_data = [
+            'post_code' => $request->post_code,
+            'address' => $request->address,
+            'building' => $request->building,
+        ];
+
+        if ($path) {
+            $profile_data['image'] = $path;
         }
+
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profile_data
+        );
 
         return redirect('/');
     }
@@ -102,8 +82,6 @@ class ProfileController extends Controller
         }
 
         $items = Item::all();
-
-        $active_items = $user->activeItems()->get();
 
         $active_chats = $user->activeChatsWithUnreadCount()->get();
 

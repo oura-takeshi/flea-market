@@ -145,25 +145,29 @@ class ItemController extends Controller
 
     public function exhibition(ExhibitionRequest $request)
     {
-        $file_name = $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images', $file_name);
+        $path = null;
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images/items', 'public');
+        }
+
         $item = Item::create([
             'user_id' => Auth::id(),
             'condition_id' => $request->condition_id,
-            'image' => 'storage/images/' . $file_name,
+            'image' => $path,
             'name' => $request->name,
             'brand' => $request->brand,
             'price' => $request->price,
             'description' => $request->description,
         ]);
 
-        $category_ids = $request->category_id;
-        foreach ($category_ids as $category_id) {
+        foreach ($request->category_id as $category_id) {
             CategoryItem::create([
                 'item_id' => $item->id,
                 'category_id' => $category_id,
             ]);
         }
+
         return redirect('/');
     }
 }
