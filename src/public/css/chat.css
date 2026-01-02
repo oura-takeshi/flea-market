@@ -76,6 +76,12 @@
     object-fit: cover;
 }
 
+.partner-section__avatar div {
+    width: 5.2vw;
+    height: 5.2vw;
+    background-color: #D9D9D9;
+}
+
 .partner-section__title {
     font-size: 33px;
     font-weight: 700;
@@ -169,6 +175,12 @@
     width: 4.0vw;
     height: 4.0vw;
     object-fit: cover;
+}
+
+.chat-section__author-avatar div {
+    width: 4.0vw;
+    height: 4.0vw;
+    background-color: #D9D9D9;
 }
 
 .chat-section__author-name {

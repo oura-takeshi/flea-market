@@ -18,11 +18,17 @@
         <section class="partner-section">
             <div class="partner-section__header">
                 <div class="partner-section__avatar">
-                    <img src="{{ asset('storage/' . 'images/items/shoulder_bag.jpg') }}" alt="プロフ画像">
+                    @if ($partner->profile->image)
+                    <img src="{{ asset('storage/' . $partner->profile->image) }}" alt="プロフ画像">
+                    @else
+                    <div></div>
+                    @endif
                 </div>
-                <h1 class="partner-section__title">「ユーザー名」さんとの取引画面</h1>
+                <h1 class="partner-section__title">{{ $partner->name }}さんとの取引画面</h1>
             </div>
+            @if ($is_buyer)
             <a class="partner-section__complete-button" href="">取引を完了する</a>
+            @endif
         </section>
         <section class="item-section">
             <img class="item-section__image" src="{{ asset('storage/' . $chat->purchase->item->image) }}" alt="商品画像">
@@ -35,30 +41,45 @@
         </section>
         <section class="chat-section">
             <div class="chat-section__messages">
+                @foreach ($chat_messages as $message)
+                @if ($message->user_id !== Auth::id())
                 <div class="chat-section__message chat-section__message--partner">
                     <div class="chat-section__author">
                         <div class="chat-section__author-avatar">
-                            <img src="{{ asset('storage/' . 'images/items/shoulder_bag.jpg') }}" alt="プロフ画像">
+                            @if ($message->user->profile->image)
+                            <img src="{{ asset('storage/' . $message->user->profile->image) }}" alt="プロフ画像">
+                            @else
+                            <div></div>
+                            @endif
                         </div>
-                        <p class="chat-section__author-name">ユーザー名</p>
+                        <p class="chat-section__author-name">{{ $message->user->name }}</p>
                     </div>
                     <div class="chat-section__content">
-                        <p class="chat-section__text">【既読】発送が完了しました。到着までお待ち下さい。</p>
-                        <img class="chat-section__image" src="{{ asset('storage/' . 'images/items/shoulder_bag.jpg') }}" alt="メッセージ画像">
+                        <p class="chat-section__text">{{ $message->content }}</p>
+                        @if ($message->image)
+                        <img class="chat-section__image" src="{{ asset('storage/' . $message->image) }}" alt="メッセージ画像">
+                        @endif
                     </div>
                 </div>
+                @else
                 <div class="chat-section__message chat-section__message--mine">
                     <div class="chat-section__author">
-                        <p class="chat-section__author-name">ユーザー名</p>
+                        <p class="chat-section__author-name">{{ $message->user->name }}</p>
                         <div class="chat-section__author-avatar">
-                            <img src="{{ asset('storage/' . 'images/items/shoulder_bag.jpg') }}" alt="プロフ画像">
+                            @if ($message->user->profile->image)
+                            <img src="{{ asset('storage/' . $message->user->profile->image) }}" alt="プロフ画像">
+                            @else
+                            <div></div>
+                            @endif
                         </div>
                     </div>
                     <div class="chat-section__actions">
                         <form class="chat-section__edit-form" action="">
                             <div class="chat-section__content chat-section__content-margin">
-                                <textarea class="chat-section__edit-form-textarea chat-input" name="" id="">【既読】商品を受け取りました。ありがとうございます。</textarea>
-                                <img class="chat-section__image" src="{{ asset('storage/' . 'images/items/shoulder_bag.jpg') }}" alt="メッセージ画像">
+                                <textarea class="chat-section__edit-form-textarea chat-input" name="content" id="">{{ old('content', $message->content) }}</textarea>
+                                @if ($message->image)
+                                <img class="chat-section__image" src="{{ asset('storage/' . $message->image) }}" alt="メッセージ画像">
+                                @endif
                             </div>
                             <button class="chat-section__edit-form-submit-button" type="submit">編集</button>
                         </form>
@@ -67,6 +88,8 @@
                         </form>
                     </div>
                 </div>
+                @endif
+                @endforeach
             </div>
             <div class="chat-section__composer">
                 <form class="chat-section__composer-form" action="">

@@ -10,18 +10,17 @@ class ChatController extends Controller
 {
     public function chat($chat_id)
     {
-        $chat = Chat::with('purchase.item')->find($chat_id);
+        $chat = Chat::with('purchase.user.profile', 'purchase.item.user.profile', 'chatMessages.user.profile')->find($chat_id);
 
         if (!$chat) {
             abort(403);
         }
 
         $user = Auth::user();
-        $user_id = $user->id;
-        $buyer_id = $chat->purchase->user_id;
-        $seller_id = $chat->purchase->item->user_id;
+        $buyer = $chat->purchase->user;
+        $seller = $chat->purchase->item->user;
 
-        if ($user_id !== $buyer_id && $user_id !== $seller_id) {
+        if ($user->id !== $buyer->id && $user->id !== $seller->id) {
             abort(403);
         }
 
@@ -30,6 +29,14 @@ class ChatController extends Controller
         ->with('purchase.item')
         ->get();
 
-        return view('chat', compact('chat', 'other_chats'));
+        $partner = $user->id === $buyer->id ? $seller : $buyer ;
+
+        $is_buyer = $user->id === $buyer->id;
+
+        $chat_messages = $chat->chatMessages()
+        ->orderBy('created_at')
+        ->get();
+
+        return view('chat', compact('chat', 'other_chats', 'partner', 'is_buyer', 'chat_messages'));
     }
 }
