@@ -9,9 +9,9 @@
     <div class="left-content">
         <h2 class="chat-links__header">その他の取引</h2>
         <div class="chat-links">
-            <a class="chat-links__link" href="">商品名</a>
-            <a class="chat-links__link" href="">商品名</a>
-            <a class="chat-links__link" href="">商品名</a>
+            @foreach ($other_chats as $other_chat)
+            <a class="chat-links__link" href="/chat/{{ $other_chat->id }}">{{ $other_chat->purchase->item->name }}</a>
+            @endforeach
         </div>
     </div>
     <div class="right-content">
@@ -25,11 +25,11 @@
             <a class="partner-section__complete-button" href="">取引を完了する</a>
         </section>
         <section class="item-section">
-            <img class="item-section__image" src="{{ asset('storage/' . 'images/items/shoulder_bag.jpg') }}" alt="商品画像">
+            <img class="item-section__image" src="{{ asset('storage/' . $chat->purchase->item->image) }}" alt="商品画像">
             <div class="item-section__info">
-                <p class="item-section__name">ショルダーバッグ</p>
+                <p class="item-section__name">{{ $chat->purchase->item->name }}</p>
                 <p class="item-section__price-yen">&yen
-                    <span class="item-section__price-number">商品価格</span>
+                    <span class="item-section__price-number">{{ number_format($chat->purchase->item->price) }}</span>
                 </p>
             </div>
         </section>
