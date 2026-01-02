@@ -190,6 +190,7 @@
 }
 
 .chat-section__image {
+    margin-top: 0.53vw;
     width: 13.6vw;
     height: auto;
 }
