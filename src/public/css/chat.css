@@ -5,3 +5,285 @@
 .nav {
     display: none;
 }
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-content {
+    background-color: #868686;
+    width: 17vw;
+    text-align: center;
+}
+
+.chat-links__header {
+    display: inline-block;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    font-size: 28px;
+    margin: 10px 0 53px;
+}
+
+.chat-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
+    margin-bottom: 53px;
+}
+
+.chat-links__link {
+    display: inline-block;
+    width: 13vw;
+    background-color: #EEEFEB;
+    line-height: 37px;
+    font-size: 22px;
+    text-decoration: none;
+    color: #000000;
+    border-radius: 4.6px;
+}
+
+.right-content {
+    width: 83vw;
+}
+
+.partner-section {
+    border-bottom: solid 2px #5F5F5F;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.86vw 2.7vw 0.86vw 2.4vw;
+}
+
+.partner-section__header {
+    display: flex;
+    align-items: center;
+    column-gap: 2vw;
+}
+
+.partner-section__avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.partner-section__avatar img {
+    width: 5.2vw;
+    height: 5.2vw;
+    object-fit: cover;
+}
+
+.partner-section__title {
+    font-size: 33px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.partner-section__complete-button {
+    display: inline-block;
+    background-color: #FF8282;
+    color: #FFFFFF;
+    text-decoration: none;
+    width: 159px;
+    line-height: 50px;
+    font-size: 18.5px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.item-section {
+    border-bottom: solid 2px #5F5F5F;
+    display: flex;
+    column-gap: 2.6vw;
+    padding: 0.93vw 2.6vw;
+}
+
+.item-section__image {
+    width: 13.6vw;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0.26vw;
+}
+
+.item-section__name {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 4.4vw;
+    margin: 2.7vw 0 0;
+}
+
+.item-section__price-yen {
+    font-size: 28px;
+    line-height: 3.0vw;
+    margin: 2.1vw 0 0;
+}
+
+.item-section__price-number {
+    font-size: 33px;
+    line-height: 3.0vw;
+}
+
+.chat-section {
+    padding: 0.93vw 1.7vw 0.66vw;
+}
+
+.chat-section__message {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.53vw;
+}
+
+.chat-section__message--partner {
+    align-items: flex-start;
+}
+
+.chat-section__message--mine {
+    align-items: flex-end;
+}
+
+.chat-section__author {
+    display: flex;
+    align-items: center;
+    column-gap: 1.6vw;
+}
+
+.chat-section__author-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.chat-section__author-avatar img {
+    width: 4.0vw;
+    height: 4.0vw;
+    object-fit: cover;
+}
+
+.chat-section__author-name {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.chat-section__content {
+    background-color: #D9D9D9;
+    width: 30vw;
+    border-radius: 0.26vw;
+    padding: 0.53vw 1.25vw;
+}
+
+.chat-section__text {
+    font-size: 19px;
+    margin: 0;
+}
+
+.chat-section__image {
+    width: 13.6vw;
+    height: auto;
+}
+
+.chat-section__actions {
+    display: flex;
+    align-items: flex-end;
+}
+
+.chat-section__edit-form {
+    text-align: right;
+}
+
+.chat-section__content-margin {
+    margin-right: -4.4vw;
+}
+
+.chat-section__edit-form-textarea {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: 19px;
+    font-family: 'Noto Sans JP', sans-serif;
+    resize: none;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.chat-section__edit-form-submit-button {
+    margin-top: 0.53vw;
+}
+
+.chat-section__delete-form {
+    width: 4.4vw;
+}
+
+.chat-section__edit-form-submit-button,
+.chat-section__delete-form-submit-button {
+    background-color: transparent;
+    border: none;
+    color: #5F5F5F;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+    display: inline-block;
+    text-shadow: 0 0.26vw 0.26vw rgba(0, 0, 0, 0.25);
+}
+
+.chat-section__delete-form-submit-button {
+    margin-left: 1.4vw;
+}
+
+.chat-section__composer {
+    margin-top: 13vw;
+}
+
+.chat-section__composer-form {
+    display: flex;
+    align-items: center;
+}
+
+.chat-section__composer-form-textarea {
+    width: 62vw;
+    background-color: transparent;
+    border: solid 1px #5F5F5F;
+    border-radius: 0.26vw;
+    font-size: 19px;
+    font-family: 'Noto Sans JP', sans-serif;
+    resize: none;
+    overflow: hidden;
+    padding: 0.53vw 1.25vw;
+    box-sizing: border-box;
+}
+
+.chat-section__composer-form-label {
+    display: inline-block;
+    font-size: 19px;
+    font-weight: 700;
+    color: #FF5555;
+    width: 132px;
+    line-height: 40.3px;
+    border: solid 2px #FF5555;
+    border-radius: 9.26px;
+    text-align: center;
+    margin-left: 1.2vw;
+    cursor: pointer;
+}
+
+.chat-section__composer-form-input-file {
+    display: none;
+}
+
+.chat-section__composer-form-submit-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.chat-section__composer-form-button-img {
+    width: 5.3vw;
+    height: auto;
+}
