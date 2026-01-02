@@ -131,6 +131,12 @@
     padding: 0.93vw 1.7vw 0.66vw;
 }
 
+.chat-section__messages {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.6vw;
+}
+
 .chat-section__message {
     display: flex;
     flex-direction: column;
@@ -286,4 +292,73 @@
 .chat-section__composer-form-button-img {
     width: 5.3vw;
     height: auto;
+}
+
+@media screen and (max-width: 851px) {
+    .chat-links__header {
+        font-size: 15.4px;
+        margin: 5.5px 0 29.2px;
+    }
+
+    .chat-links {
+        row-gap: 22px;
+        margin-bottom: 29.2px;
+    }
+
+    .chat-links__link {
+        line-height: 20.4px;
+        font-size: 12.1px;
+        border-radius: 2.53px;
+    }
+
+    .partner-section__title {
+        font-size: 18.2px;
+    }
+
+    .partner-section__complete-button {
+        width: 87.5px;
+        line-height: 27.5px;
+        font-size: 10.2px;
+        border-radius: 13.8px;
+    }
+
+    .item-section__name {
+        font-size: 24.2px;
+    }
+
+    .item-section__price-yen {
+        font-size: 15.4px;
+    }
+
+    .item-section__price-number {
+        font-size: 18.2px;
+    }
+
+    .chat-section__author-name {
+        font-size: 10.5px;
+    }
+
+    .chat-section__text {
+        font-size: 10.5px;
+    }
+
+    .chat-section__edit-form-textarea {
+        font-size: 10.5px;
+    }
+
+    .chat-section__edit-form-submit-button,
+    .chat-section__delete-form-submit-button {
+        font-size: 7.7px;
+    }
+
+    .chat-section__composer-form-textarea {
+        font-size: 10.5px;
+    }
+
+    .chat-section__composer-form-label {
+        font-size: 10.5px;
+        width: 72.6px;
+        line-height: 22.2px;
+        border-radius: 5.09px;
+    }
 }
