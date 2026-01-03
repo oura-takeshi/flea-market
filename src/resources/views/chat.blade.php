@@ -93,9 +93,9 @@
             </div>
             <div class="chat-section__composer">
                 <form class="chat-section__composer-form" action="">
-                    <textarea class="chat-section__composer-form-textarea chat-input" name="" id="" placeholder="取引メッセージを記入して下さい" rows="1"></textarea>
+                    <textarea class="chat-section__composer-form-textarea chat-input" name="content" id="" placeholder="取引メッセージを記入して下さい" rows="1"></textarea>
                     <label class="chat-section__composer-form-label" for="message_image">画像を追加</label>
-                    <input class="chat-section__composer-form-input-file" type="file" name="" id="message_image">
+                    <input class="chat-section__composer-form-input-file" type="file" name="image" id="message_image">
                     <button class="chat-section__composer-form-submit-button" type="submit">
                         <img class="chat-section__composer-form-button-img" src="{{ asset('images/ui/input_button.jpg') }}" alt="送信">
                     </button>
