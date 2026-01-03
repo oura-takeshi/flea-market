@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
-    public function chat($chat_id)
+    public function show($chat_id)//未読メッセージ既読変更機能も追加する！
     {
         $chat = Chat::with('purchase.user.profile', 'purchase.item.user.profile', 'chatMessages.user.profile')->find($chat_id);
 

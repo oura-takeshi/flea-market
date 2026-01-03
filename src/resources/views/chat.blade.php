@@ -92,7 +92,18 @@
                 @endforeach
             </div>
             <div class="chat-section__composer">
-                <form class="chat-section__composer-form" action="">
+                @if ($errors->any())
+                <div class="chat-section__composer-form-errors">
+                    @error('content')
+                    <p class="chat-section__composer-form-error">{{ $message }}</p>
+                    @enderror
+                    @error('image')
+                    <p class="chat-section__composer-form-error">{{ $message }}</p>
+                    @enderror
+                </div>
+                @endif
+                <form class="chat-section__composer-form" action="/chat/{{ $chat->id }}/messages" method="post" enctype="multipart/form-data">
+                    @csrf
                     <textarea class="chat-section__composer-form-textarea chat-input" name="content" id="" placeholder="取引メッセージを記入して下さい" rows="1"></textarea>
                     <label class="chat-section__composer-form-label" for="message_image">画像を追加</label>
                     <input class="chat-section__composer-form-input-file" type="file" name="image" id="message_image">

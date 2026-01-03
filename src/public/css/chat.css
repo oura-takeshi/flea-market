@@ -259,6 +259,13 @@
     margin-top: 13vw;
 }
 
+.chat-section__composer-form-error {
+    font-size: 19px;
+    font-weight: 400;
+    color: #ff0000;
+    margin: 0;
+}
+
 .chat-section__composer-form {
     display: flex;
     align-items: center;
@@ -362,6 +369,10 @@
     .chat-section__edit-form-submit-button,
     .chat-section__delete-form-submit-button {
         font-size: 7.7px;
+    }
+
+    .chat-section__composer-form-error {
+        font-size: 10.5px;
     }
 
     .chat-section__composer-form-textarea {
