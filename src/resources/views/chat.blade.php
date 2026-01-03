@@ -76,7 +76,7 @@
                     <div class="chat-section__actions">
                         <form class="chat-section__edit-form" action="">
                             <div class="chat-section__content chat-section__content-margin">
-                                <textarea class="chat-section__edit-form-textarea chat-input" name="content" id="">{{ old('content', $message->content) }}</textarea>
+                                <textarea class="chat-section__edit-form-textarea chat-input" name="content" id="" rows="1">{{ old('content', $message->content) }}</textarea>
                                 @if ($message->image)
                                 <img class="chat-section__image" src="{{ asset('storage/' . $message->image) }}" alt="メッセージ画像">
                                 @endif
