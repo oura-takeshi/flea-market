@@ -104,7 +104,7 @@
                 @endif
                 <form class="chat-section__composer-form" action="/chat/{{ $chat->id }}/messages" method="post" enctype="multipart/form-data">
                     @csrf
-                    <textarea class="chat-section__composer-form-textarea chat-input" name="content" id="" placeholder="取引メッセージを記入して下さい" rows="1"></textarea>
+                    <textarea class="chat-section__composer-form-textarea chat-input" name="content" id="" placeholder="取引メッセージを記入して下さい" rows="1">{{ old('content') }}</textarea>
                     <label class="chat-section__composer-form-label" for="message_image">画像を追加</label>
                     <input class="chat-section__composer-form-input-file" type="file" name="image" id="message_image">
                     <button class="chat-section__composer-form-submit-button" type="submit">
