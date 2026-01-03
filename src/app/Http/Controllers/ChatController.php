@@ -24,7 +24,7 @@ class ChatController extends Controller
             abort(403);
         }
 
-        $chat->chatMessage()
+        $chat->chatMessages()
         ->where('is_read', false)
         ->where('user_id', '!=', $user->id)
         ->update(['is_read' => true]);
