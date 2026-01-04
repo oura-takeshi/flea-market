@@ -41,4 +41,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/chat/{chat_id}', [ChatController::class, 'show']);
     Route::post('/chat/{chat_id}/messages', [ChatMessageController::class, 'store']);
     Route::patch('/chat/{chat_id}/messages/{chat_message_id}', [ChatMessageController::class, 'update']);
+    Route::delete('/chat/{chat_id}/messages/{chat_message_id}', [ChatMessageController::class, 'destroy']);
 });

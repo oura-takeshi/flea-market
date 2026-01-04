@@ -75,8 +75,8 @@
                     </div>
                     <div class="chat-section__actions">
                         <form class="chat-section__edit-form" action="/chat/{{ $chat->id }}/messages/{{ $message->id }}" method="post">
-                            @csrf
                             @method('PATCH')
+                            @csrf
                             @error("edit_content_{$message->id}", 'edit')
                             <p class="chat-section__edit-form-error">{{ $message }}</p>
                             @enderror
@@ -88,7 +88,9 @@
                             </div>
                             <button class="chat-section__edit-form-submit-button" type="submit">編集</button>
                         </form>
-                        <form class="chat-section__delete-form" action="">
+                        <form class="chat-section__delete-form" action="/chat/{{ $chat->id }}/messages/{{ $message->id }}" method="post">
+                            @method('DELETE')
+                            @csrf
                             <button class="chat-section__delete-form-submit-button" type="submit">削除</button>
                         </form>
                     </div>
