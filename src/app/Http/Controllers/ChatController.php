@@ -10,19 +10,13 @@ class ChatController extends Controller
 {
     public function show($chat_id)
     {
-        $chat = Chat::with('purchase.user.profile', 'purchase.item.user.profile', 'chatMessages.user.profile')->find($chat_id);
-
-        if (!$chat) {
-            abort(403);
-        }
+        $chat = Chat::with('purchase.user.profile', 'purchase.item.user.profile', 'chatMessages.user.profile')->findOrFail($chat_id);
 
         $user = Auth::user();
         $buyer = $chat->purchase->user;
         $seller = $chat->purchase->item->user;
 
-        if ($user->id !== $buyer->id && $user->id !== $seller->id) {
-            abort(403);
-        }
+        $this->authorize('participate', $chat);
 
         $chat->chatMessages()
         ->where('is_read', false)
