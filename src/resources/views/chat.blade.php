@@ -77,8 +77,11 @@
                         <form class="chat-section__edit-form" action="/chat/{{ $chat->id }}/messages/{{ $message->id }}" method="post">
                             @csrf
                             @method('PATCH')
+                            @error("edit_content_{$message->id}", 'edit')
+                            <p class="chat-section__edit-form-error">{{ $message }}</p>
+                            @enderror
                             <div class="chat-section__content chat-section__content-margin">
-                                <textarea class="chat-section__edit-form-textarea js-auto-resize" name="content" id="" rows="1">{{ old('content', $message->content) }}</textarea>
+                                <textarea class="chat-section__edit-form-textarea js-auto-resize" name="edit_content_{{ $message->id }}" id="" rows="1">{{ old("edit_content_{$message->id}", $message->content) }}</textarea>
                                 @if ($message->image)
                                 <img class="chat-section__image" src="{{ asset('storage/' . $message->image) }}" alt="メッセージ画像">
                                 @endif

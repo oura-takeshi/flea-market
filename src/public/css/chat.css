@@ -216,6 +216,14 @@
     text-align: right;
 }
 
+.chat-section__edit-form-error {
+    text-align: left;
+    font-size: 19px;
+    font-weight: 400;
+    color: #ff0000;
+    margin: 0;
+}
+
 .chat-section__content-margin {
     margin-right: -4.4vw;
 }

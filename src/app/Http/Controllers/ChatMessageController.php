@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use App\Models\Chat;
 use App\Models\ChatMessage;
 use App\Http\Requests\ChatMessageRequest;
@@ -32,7 +33,7 @@ class ChatMessageController extends Controller
         return back();
     }
 
-    public function update(ChatMessageRequest $request, $chat_id, $chat_message_id)
+    public function update(Request $request, $chat_id, $chat_message_id)
     {
         $chat = Chat::findOrFail($chat_id);
 
@@ -46,8 +47,19 @@ class ChatMessageController extends Controller
             abort(403);
         }
 
+        $validated = validator(
+            $request->all(),
+            [
+                "edit_content_{$message->id}" => 'required|max:400',
+            ],
+            [
+                "edit_content_{$message->id}.required" => '本文を入力してください',
+                "edit_content_{$message->id}.max" => '本文は400文字以内で入力してください',
+            ]
+        )->validateWithBag('edit');
+
         $message->update([
-            'content' => $request->content,
+            'content' => $validated["edit_content_{$message->id}"],
             'is_read' => false,
         ]);
 

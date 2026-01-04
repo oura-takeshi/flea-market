@@ -27,6 +27,7 @@ class ChatMessageRequest extends FormRequest
             'content' => 'required|max:400',
             'image' => 'nullable|mimes:jpeg,png',
         ];
+
     }
 
     public function messages()
