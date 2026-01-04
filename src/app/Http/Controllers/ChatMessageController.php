@@ -31,4 +31,26 @@ class ChatMessageController extends Controller
 
         return back();
     }
+
+    public function update(ChatMessageRequest $request, $chat_id, $chat_message_id)
+    {
+        $chat = Chat::findOrFail($chat_id);
+
+        $this->authorize('participate', $chat);
+
+        $message = ChatMessage::where('id', $chat_message_id)
+            ->where('chat_id', $chat_id)
+            ->firstOrFail();
+
+        if ($message->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $message->update([
+            'content' => $request->content,
+            'is_read' => false,
+        ]);
+
+        return back();
+    }
 }

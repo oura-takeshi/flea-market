@@ -74,7 +74,9 @@
                         </div>
                     </div>
                     <div class="chat-section__actions">
-                        <form class="chat-section__edit-form" action="">
+                        <form class="chat-section__edit-form" action="/chat/{{ $chat->id }}/messages/{{ $message->id }}" method="post">
+                            @csrf
+                            @method('PATCH')
                             <div class="chat-section__content chat-section__content-margin">
                                 <textarea class="chat-section__edit-form-textarea js-auto-resize" name="content" id="" rows="1">{{ old('content', $message->content) }}</textarea>
                                 @if ($message->image)
