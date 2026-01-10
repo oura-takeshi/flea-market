@@ -464,6 +464,10 @@ body.is-modal-open {
         font-size: 10.5px;
     }
 
+    .chat-section__edit-form-error {
+        font-size: 10.5px;
+    }
+
     .chat-section__edit-form-textarea {
         font-size: 10.5px;
     }
@@ -486,5 +490,31 @@ body.is-modal-open {
         width: 72.6px;
         line-height: 22.2px;
         border-radius: 5.09px;
+    }
+
+    .review-modal__title {
+        font-size: 17.6px;
+        line-height: 21.5px;
+    }
+
+    .review-modal__message {
+        font-size: 10.2px;
+        line-height: 12.2px;
+    }
+
+    .review-modal__stars {
+        column-gap: 6.6px;
+    }
+
+    .review-modal__stars label {
+        font-size: 51.2px;
+        line-height: 51.2px;
+    }
+
+    .review-form__button-submit {
+        font-size: 12.2px;
+        line-height: 24.9px;
+        width: 64.9px;
+        border-radius: 2.53px;
     }
 }
