@@ -27,7 +27,7 @@
                 <h1 class="partner-section__title">{{ $partner->name }}さんとの取引画面</h1>
             </div>
             @if ($is_buyer)
-            <a class="partner-section__complete-button" href="">取引を完了する</a>
+            <a class="partner-section__complete-button" id="open-review-modal" href="#">取引を完了する</a>
             @endif
         </section>
         <section class="item-section">
@@ -122,9 +122,34 @@
         </section>
     </div>
 </div>
+<div class="review-modal" id="review-modal">
+    <div class="review-modal__overlay"></div>
+    <div class="review-modal__content">
+        <h2 class="review-modal__title">取引が完了しました。</h2>
+        <p class="review-modal__message">今回の取引相手はどうでしたか？</p>
+        <form class="review-modal__form" action="">
+            <div class="review-modal__stars">
+                @for ($i = 5; $i >= 1; $i--)
+                <input type="radio" name="score" id="star{{ $i }}" value="{{ $i }}" required>
+                <label for="star{{ $i }}">★</label>
+                @endfor
+            </div>
+            <div class="review-form__actions">
+                <button type="submit" class="review-form__button-submit">
+                    送信する
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        initTextareaAutoResize();
+        initChatDraft();
+        initReviewModal();
+    });
 
+    function initTextareaAutoResize() {
         const autoResize = (el) => {
             el.style.height = 'auto';
             el.style.height = el.scrollHeight + 'px';
@@ -132,12 +157,11 @@
 
         document.querySelectorAll('.js-auto-resize').forEach(textarea => {
             autoResize(textarea);
-
-            textarea.addEventListener('input', () => {
-                autoResize(textarea);
-            });
+            textarea.addEventListener('input', () => autoResize(textarea));
         });
+    }
 
+    function initChatDraft() {
         const composer = document.querySelector('.js-chat-draft');
         if (!composer) return;
 
@@ -146,7 +170,8 @@
         const saved = localStorage.getItem(storageKey);
         if (saved) {
             composer.value = saved;
-            autoResize(composer);
+            composer.style.height = 'auto';
+            composer.style.height = composer.scrollHeight + 'px';
         }
 
         composer.addEventListener('input', () => {
@@ -159,6 +184,54 @@
                 localStorage.removeItem(storageKey);
             });
         }
-    });
+    }
+
+    function initReviewModal() {
+        const openBtn = document.getElementById('open-review-modal');
+        const modal = document.getElementById('review-modal');
+        if (!openBtn || !modal) return;
+
+        const overlay = modal.querySelector('.review-modal__overlay');
+
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('is-open');
+            document.body.classList.add('is-modal-open');
+        });
+
+        overlay.addEventListener('click', () => {
+            closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            modal.classList.remove('is-open');
+            document.body.classList.remove('is-modal-open');
+        }
+
+        initReviewStars();
+    }
+
+    function initReviewStars() {
+        const starInputs = [...document.querySelectorAll('.review-modal__stars input')];
+        if (starInputs.length === 0) return;
+
+        const starLabels = starInputs.map(input =>
+            document.querySelector(`label[for="${input.id}"]`)
+        );
+
+        starInputs.forEach((input, index) => {
+            input.addEventListener('change', () => {
+                starLabels.forEach((label, i) => {
+                    label.classList.toggle('is-active', i >= index);
+                });
+            });
+        });
+    }
 </script>
 @endsection

@@ -322,6 +322,100 @@
     height: auto;
 }
 
+.review-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+}
+
+.review-modal.is-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.is-modal-open {
+    overflow: hidden;
+}
+
+.review-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.review-modal__content {
+    position: relative;
+    z-index: 1;
+    background-color: #FDFCE6;
+    width: 40vw;
+    border-radius: 1vw;
+    border: solid 1px #000000;
+}
+
+.review-modal__title {
+    border-bottom: solid 1px #000000;
+    margin: 0;
+    font-size: 32px;
+    line-height: 39px;
+    padding: 1.4vw 0 1.7vw 1.5vw;
+}
+
+.review-modal__message {
+    margin: 0;
+    font-size: 18.5px;
+    line-height: 22.2px;
+    padding: 1.3vw 0 2.1vw 1.5vw;
+    color: #868686;
+}
+
+.review-modal__stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    column-gap: 12px;
+    border-bottom: solid 1px #000000;
+    padding-bottom: 1.6vw;
+}
+
+.review-modal__stars input {
+    display: none;
+}
+
+.review-modal__stars label {
+    font-size: 93px;
+    line-height: 93px;
+    cursor: pointer;
+    color: #D9D9D9;
+}
+
+.review-modal__stars input:checked ~ label {
+    color: #FFF048;
+}
+
+.review-modal__stars label:hover,
+.review-modal__stars label:hover ~ label {
+    color: #FFF048;
+}
+
+.review-form__actions {
+    text-align: right;
+    padding: 0.93vw 0.93vw 1.2vw 0;
+}
+
+.review-form__button-submit {
+    font-size: 22.2px;
+    line-height: 45.3px;
+    width: 118px;
+    color: #FFFFFF;
+    background-color: #FF8282;
+    border: none;
+    border-radius: 4.6px;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 851px) {
     .chat-links__header {
         font-size: 15.4px;
