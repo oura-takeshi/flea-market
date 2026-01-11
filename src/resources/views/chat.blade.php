@@ -127,7 +127,8 @@
     <div class="review-modal__content">
         <h2 class="review-modal__title">取引が完了しました。</h2>
         <p class="review-modal__message">今回の取引相手はどうでしたか？</p>
-        <form class="review-modal__form" action="">
+        <form class="review-modal__form" action="/chat/{{ $chat->id }}/review" method="post">
+            @csrf
             <div class="review-modal__stars">
                 @for ($i = 5; $i >= 1; $i--)
                 <input type="radio" name="score" id="star{{ $i }}" value="{{ $i }}" required>

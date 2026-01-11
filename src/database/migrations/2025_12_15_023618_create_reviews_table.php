@@ -20,6 +20,7 @@ class CreateReviewsTable extends Migration
             $table->foreignId('reviewee_id')->constrained('users')->cascadeOnDelete();
             $table->tinyInteger('score')->unsigned()->comment('1〜5');
             $table->timestamps();
+            $table->unique(['chat_id', 'reviewer_id']);
         });
     }
 

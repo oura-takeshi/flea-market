@@ -7,6 +7,7 @@ use App\Http\Controllers\ChatMessageController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/chat/{chat_id}/messages', [ChatMessageController::class, 'store']);
     Route::patch('/chat/{chat_id}/messages/{chat_message_id}', [ChatMessageController::class, 'update']);
     Route::delete('/chat/{chat_id}/messages/{chat_message_id}', [ChatMessageController::class, 'destroy']);
+    Route::post('/chat/{chat_id}/review', [ReviewController::class, 'store']);
 });
