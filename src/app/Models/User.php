@@ -100,11 +100,23 @@ class User extends Authenticatable
         });
     }
 
-    public function activeChatsWithUnreadCount()
+    public function visibleActiveChats()
     {
         $user_id = $this->id;
 
         return $this->activeChats()
+        ->where(function ($q) use ($user_id) {
+            $q->whereDoesntHave('reviews', function ($sub) use ($user_id) {
+                $sub->where('reviewer_id', $user_id);
+            });
+        });
+    }
+
+    public function visibleActiveChatsWithUnreadCount()
+    {
+        $user_id = $this->id;
+
+        return $this->visibleActiveChats()
         ->withCount(['chatMessages as unread_count' => function ($q) use ($user_id) {
             $q->where('is_read', false)
             ->where('user_id', '!=', $user_id);

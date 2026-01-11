@@ -83,7 +83,7 @@ class ProfileController extends Controller
 
         $items = Item::all();
 
-        $active_chats = $user->activeChatsWithUnreadCount()->get();
+        $active_chats = $user->visibleActiveChatsWithUnreadCount()->get();
 
         $total_unread_count = $active_chats->sum('unread_count');
 

@@ -144,6 +144,8 @@
     </div>
 </div>
 <script>
+    window.forceReviewModal = @json($force_review_modal);
+
     document.addEventListener('DOMContentLoaded', () => {
         initTextareaAutoResize();
         initChatDraft();
@@ -188,35 +190,42 @@
     }
 
     function initReviewModal() {
-        const openBtn = document.getElementById('open-review-modal');
         const modal = document.getElementById('review-modal');
-        if (!openBtn || !modal) return;
+        if (!modal) return;
 
         const overlay = modal.querySelector('.review-modal__overlay');
+        const openBtn = document.getElementById('open-review-modal');
 
-        openBtn.addEventListener('click', (e) => {
-            e.preventDefault();
+        if (openBtn) {
+            openBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal();
+            });
+        }
+
+        if (window.forceReviewModal) {
+            openModal(true);
+        }
+
+        function openModal(force = false) {
             modal.classList.add('is-open');
             document.body.classList.add('is-modal-open');
-        });
 
-        overlay.addEventListener('click', () => {
-            closeModal();
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-                closeModal();
+            if (force) {
+                overlay.style.pointerEvents = 'none';
+                document.addEventListener('keydown', blockEscape);
             }
-        });
+        }
 
-        function closeModal() {
-            modal.classList.remove('is-open');
-            document.body.classList.remove('is-modal-open');
+        function blockEscape(e) {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+            }
         }
 
         initReviewStars();
     }
+
 
     function initReviewStars() {
         const starInputs = [...document.querySelectorAll('.review-modal__stars input')];
