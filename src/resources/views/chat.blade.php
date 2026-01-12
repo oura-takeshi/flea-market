@@ -211,9 +211,26 @@
             modal.classList.add('is-open');
             document.body.classList.add('is-modal-open');
 
-            if (force) {
+            if (!force) {
+                overlay.addEventListener('click', closeModal);
+                document.addEventListener('keydown', handleEscape);
+            } else {
                 overlay.style.pointerEvents = 'none';
                 document.addEventListener('keydown', blockEscape);
+            }
+        }
+
+        function closeModal() {
+            modal.classList.remove('is-open');
+            document.body.classList.remove('is-modal-open');
+
+            overlay.removeEventListener('click', closeModal);
+            document.removeEventListener('keydown', handleEscape);
+        }
+
+        function handleEscape(e) {
+            if (e.key === 'Escape') {
+                closeModal();
             }
         }
 
