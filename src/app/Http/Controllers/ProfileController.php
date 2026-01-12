@@ -87,7 +87,9 @@ class ProfileController extends Controller
 
         $total_unread_count = $active_chats->sum('unread_count');
 
-        return view('mypage', compact('param', 'user_id', 'user_name', 'image', 'items', 'active_chats', 'total_unread_count'));
+        $average_score = $user->averageReviewScore();
+
+        return view('mypage', compact('param', 'user_id', 'user_name', 'image', 'items', 'active_chats', 'total_unread_count', 'average_score'));
     }
 
     public function addressEdit($item_id)

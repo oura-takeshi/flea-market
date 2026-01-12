@@ -125,17 +125,14 @@ class User extends Authenticatable
         ->orderByDesc('chat_messages_max_created_at');
     }
 
-    /*
-    public function activeItems()
+    public function averageReviewScore(): ?int
     {
-        $user_id = $this->id;
-        return Item::whereHas('purchase.chat', function ($q) {
-            $q->where('is_finished', false);
-        })->where(function ($q) use ($user_id) {
-            $q->where('user_id', $user_id)->orWhereHas('purchase', function ($sub) use ($user_id){
-                $sub->where('user_id', $user_id);
-            });
-        });
+        $avg = $this->receivedReviews()->avg('score');
+
+        if ($avg === null) {
+            return null;
+        }
+
+        return (int) round($avg);
     }
-    */
 }

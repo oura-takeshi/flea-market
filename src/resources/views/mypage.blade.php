@@ -16,7 +16,18 @@
                     <div></div>
                     @endif
                 </div>
-                <h1 class="profile-name">{{ $user_name }}</h1>
+                <div class="profile-header">
+                    <h1 class="profile-name">{{ $user_name }}</h1>
+                    @if (!is_null($average_score))
+                    <div class="profile-score">
+                        <div class="profile-score__stars">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <span class="profile-score__star {{ $i <= $average_score ? 'is-active' : '' }}">★</span>
+                                @endfor
+                        </div>
+                    </div>
+                    @endif
+                </div>
             </div>
             <a href="/mypage/profile" class="profile-link">プロフィールを編集</a>
         </div>

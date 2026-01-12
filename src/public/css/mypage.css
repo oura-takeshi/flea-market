@@ -1,5 +1,5 @@
 .content {
-    margin-top: 5vw;
+    margin-top: 4.43vw;
 }
 
 .top-content {
@@ -11,12 +11,13 @@
     justify-content: space-between;
     align-items: center;
     width: 70vw;
-    margin: 0 auto 5vw;
+    margin: 0 13vw 5.36vw 19.8vw;
 }
 
 .profile-info {
     display: flex;
     align-items: center;
+    column-gap: 1.79vw;
 }
 
 .profile-image {
@@ -40,10 +41,29 @@
 }
 
 .profile-name {
-    font-size: 32px;
+    font-size: 33.3px;
     font-weight: 700;
-    padding-left: 4vw;
-    max-width: 40vw;
+    margin: 0 0 0 1.98vw;
+}
+
+.profile-score {
+    margin-top: 1.72vw;
+}
+
+.profile-score__stars {
+    display: flex;
+    column-gap: 4.63px;
+}
+
+.profile-score__star {
+    display: inline-block;
+    font-size: 37px;
+    line-height: 37px;
+    color: #D9D9D9;
+}
+
+.profile-score__star.is-active {
+    color: #FFF048;
 }
 
 .profile-link {
@@ -66,15 +86,15 @@
 }
 
 .heading__sell {
-    margin-left: 9vw;
+    margin-left: 12.4vw;
 }
 
 .heading__buy {
-    margin-left: 3vw;
+    margin-left: 6.02vw;
 }
 
 .heading__deal {
-    margin-left: 3vw;
+    margin-left: 6.02vw;
 }
 
 .para {
@@ -171,7 +191,16 @@
 
 @media screen and (max-width: 851px) {
     .profile-name {
-        font-size: 17px;
+        font-size: 18.3px;
+    }
+
+    .profile-score__stars {
+        column-gap: 2.55px;
+    }
+
+    .profile-score__star {
+        font-size: 20.4px;
+        line-height: 20.4px;
     }
 
     .profile-link {
